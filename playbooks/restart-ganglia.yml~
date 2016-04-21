@@ -1,0 +1,13 @@
+---
+- hosts: Danforth_Shakoor
+  gather_facts: False
+  remote_user: pi
+  become: yes
+  vars:
+    timeout: 30
+  tasks:
+    - name: Restart ganglia for all the PIs
+      shell: /bin/systemctl restart ganglia-monitor
+      
+      
+      

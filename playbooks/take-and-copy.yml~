@@ -1,0 +1,68 @@
+---
+- hosts: Danforth_Shakoor
+  gather_facts: False
+  remote_user: pi
+  ignore_errors: True
+  vars:
+    # timeout: 10
+
+  tasks:
+    - name: Take picture on the raspberry pi.
+      # local_action:
+      #   shell rsh -l pi "{{ inventory_hostname }}" "bash /home/pi/camera.sh && echo Success"
+      command: bash /home/pi/camera.sh
+
+- hosts: Danforth_Shakoor
+  gather_facts: False
+  remote_user: pi
+  serial: 2
+  ignore_errors: True
+  vars:
+    # timeout: 10
+    img_dir: /home/pi/Images
+    local_dir: /home/clizarraga/Raspberry_Pi/Images
+
+  tasks:
+    - name: Increase transmit power before file sending
+      # local_action:
+      #   shell rsh -l pi "{{ inventory_hostname }}" "sudo iwconfig wlan0 txpower 20 && echo Success"
+      command: iwconfig wlan0 txpower 20
+      become: yes
+      tags:
+        - always
+      
+    - name: Get file name(s)
+      # local_action:
+      #   shell rsh -l pi "{{ inventory_hostname }}" "(cd {{ img_dir }}; find . -maxdepth 1 -type f) | cut -d '/' -f2"
+      shell: "(cd {{ img_dir }}; find . -maxdepth 1 -type f) | cut -d '/' -f2"
+      register: files_to_copy
+      tags:
+        - always
+
+    - name: Pull with rsh and rsync from chronos
+      # local_action:
+      #   shell /usr/bin/rsync --delay-updates -F --compress --archive --remove-source-files --rsh=rsh --out-format='<<CHANGED>>%i %n%L' pi@"{{ inventory_hostname }}:{{ img_dir }}/{{ item }}" "{{ local_dir }}/{{ inventory_hostname }}/ && echo Success"
+      synchronize:
+        src: "{{ img_dir }}/{{ item }}"
+        dest: "{{ local_dir }}/{{ inventory_hostname }}/"
+        mode: pull
+        use_ssh_args: yes
+        ssh_args: no
+        rsync_opts:
+          - "--rsh=rsh"
+          - "--remove-source-files"
+          - "--timeout=30"          
+        
+      with_items:
+        "{{ files_to_copy.stdout_lines }}"
+      tags:
+        - always
+
+    - name: Decrease transmit power after sending file
+      # local_action:
+      #   shell rsh -l pi "{{ inventory_hostname }}" "sudo iwconfig wlan0 txpower 18 && echo Success"
+      command: iwconfig wlan0 txpower 18
+      become: yes
+      tags:
+        - always
+      

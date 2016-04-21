@@ -1,0 +1,13 @@
+---
+- hosts: Danforth_Shakoor
+  gather_facts: False
+  remote_user: pi
+  ignore_errors: True
+
+  tasks:
+    - name: Take picture on the raspberry pi.
+      # local_action:
+      #   shell rsh -l pi "{{ inventory_hostname }}" "bash /home/pi/camera.sh && echo Success"
+      shell: bash /home/pi/camera.sh && echo Success
+      register: command_result
+      changed_when: "'Success' in command_result.stdout"

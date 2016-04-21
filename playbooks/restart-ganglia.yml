@@ -1,0 +1,17 @@
+---
+- hosts: Danforth_Shakoor
+  gather_facts: False
+  remote_user: pi
+  become: yes
+  tasks:
+    - name: Set no utmp in sshd. No DNS reverse lookup.
+      command: sed -i 's/\(SSHD_OPTS=\).*/\1-u0/' /etc/default/ssh
+
+    # - name: Set utmp back in sshd.
+    #   command: sed -i 's/\(SSHD_OPTS=\).*/\1/' /etc/default/ssh
+
+    - name: Restart ganglia on all PIs.
+      command: systemctl restart ganglia-monitor
+      
+      
+      

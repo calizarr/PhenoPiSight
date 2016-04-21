@@ -1,0 +1,81 @@
+---
+- hosts: Danforth_Shakoor
+  gather_facts: False
+  remote_user: pi
+  become: yes
+  vars:
+    utmp: false
+    change_utmp: false
+    use_dns: false
+    change_dns: false
+    restart_ganglia: false
+    restart_ssh: false
+    timezone: US/Central
+    timezone_change: false
+    cron_add: false
+    python_script: true
+    
+  tasks:
+    - name: Restart ganglia on all PIs.
+      command: systemctl restart ganglia-monitor
+      when: restart_ganglia
+
+    - name: Restart ssh service on all PIs
+      command: systemctl restart ssh.service
+      when: restart_ssh
+      
+    - name: Find with grep if -u0 exists
+      command: grep '-u0' /etc/default/ssh
+      register: utmp_set
+      failed_when: False
+      
+    - name: Set no utmp in sshd. No DNS reverse lookup.
+      command: sed -i 's/\(SSHD_OPTS=\).*/\1-u0/' /etc/default/ssh
+      when: (utmp and utmp_set.rc == 1 and change_utmp)
+
+    - name: Set utmp back in sshd.
+      command: sed -i 's/\(SSHD_OPTS=\).*/\1/' /etc/default/ssh
+      when: (not utmp and utmp_set.rc == 0 and change_utmp)
+
+    - name: Find with awk if UseDNS exists.
+      command: grep 'UseDNS'/etc/ssh/sshd_config
+      register: dns_exist
+      failed_when: False
+
+    - name: Add UseDNS no to sshd_config
+      # command: echo "UseDNS no" >> /etc/ssh/sshd_config
+      command: sed -i -e '$aUseDNS no' /etc/ssh/sshd_config
+      when: (use_dns and dns_exist.rc == 1 and change_dns)
+
+    - name: Remove useDNS from sshd_config.
+      shell: sed  '$(grep -n "UseDNS" /etc/ssh/sshd_config | cut -f1 -d':')d' /etc/ssh/sshd_config
+      when: (not use_dns and dns_exist.rc == 0 and change_dns)
+
+    - name: Change timezone
+      shell: "echo {{ timezone }} | tee /etc/timezone > /dev/null"
+      become: yes
+      when: timezone_change
+
+    - name: Reconfigure dpkg
+      command: dpkg-reconfigure -f noninteractive tzdata
+      become: yes
+      when: timezone_change
+
+    - name: Add hourly cron job from 5 AM to 9 PM
+      cron: name="take pictures" hour="5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21" minute="0" jobs="python single_camera.py"
+      when: cron_add
+
+    - name: Send camera_single.py to the rPIs.
+      copy:
+        src: /shares/tmockler_share/clizarraga/Raspberry_Pi/Scripts/camera_single.py
+        dest: /home/pi/
+      when: python_script
+
+- hosts: clizarraga_chronos
+  vars:
+    local_cron: false
+
+  tasks:
+    - name: Add hourly cron job to take pictures from rPIs at every hour.
+      cron: name="copy pictures" hour="*" minute="5" jobs="cd /home/clizarraga/usr/local/ansible/cluster/rPI/playbooks/ && time bash -x playbook-ansible.sh -i ../hosts copy-pictures.yml -f 2 -vv"
+      when: local_cron

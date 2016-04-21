@@ -1,0 +1,46 @@
+2016-04-21 10:28:30,313 p=16991 u=clizarraga |  Using /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/ansible.cfg as config file
+2016-04-21 10:28:31,456 p=16991 u=clizarraga |  PLAYBOOK: sudo-plays.yml *******************************************************
+2016-04-21 10:28:31,456 p=16991 u=clizarraga |  2 plays in sudo-plays.yml
+2016-04-21 10:28:31,484 p=16991 u=clizarraga |  PLAY [Danforth_Shakoor] ********************************************************
+2016-04-21 10:28:31,555 p=16991 u=clizarraga |  TASK [Restart ganglia on all PIs.] *********************************************
+2016-04-21 10:28:31,556 p=16991 u=clizarraga |  task path: /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/sudo-plays.yml:19
+2016-04-21 10:28:31,596 p=16991 u=clizarraga |  skipping: [10.9.0.185] => {"changed": false, "skip_reason": "Conditional check failed", "skipped": true}
+2016-04-21 10:28:31,601 p=16991 u=clizarraga |  TASK [Restart ssh service on all PIs] ******************************************
+2016-04-21 10:28:31,602 p=16991 u=clizarraga |  task path: /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/sudo-plays.yml:23
+2016-04-21 10:28:31,637 p=16991 u=clizarraga |  skipping: [10.9.0.185] => {"changed": false, "skip_reason": "Conditional check failed", "skipped": true}
+2016-04-21 10:28:31,642 p=16991 u=clizarraga |  TASK [Find with grep if -u0 exists] ********************************************
+2016-04-21 10:28:31,643 p=16991 u=clizarraga |  task path: /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/sudo-plays.yml:27
+2016-04-21 10:29:03,104 p=16991 u=clizarraga |  changed: [10.9.0.185] => {"changed": true, "cmd": ["grep", "-u0", "/etc/default/ssh"], "delta": "0:00:00.045910", "end": "2016-04-21 10:29:02.400624", "failed": false, "failed_when_result": false, "rc": 1, "start": "2016-04-21 10:29:02.354714", "stderr": "", "stdout": "", "stdout_lines": [], "warnings": []}
+2016-04-21 10:29:03,112 p=16991 u=clizarraga |  TASK [Set no utmp in sshd. No DNS reverse lookup.] *****************************
+2016-04-21 10:29:03,113 p=16991 u=clizarraga |  task path: /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/sudo-plays.yml:32
+2016-04-21 10:29:03,288 p=16991 u=clizarraga |  skipping: [10.9.0.185] => {"changed": false, "skip_reason": "Conditional check failed", "skipped": true}
+2016-04-21 10:29:03,295 p=16991 u=clizarraga |  TASK [Set utmp back in sshd.] **************************************************
+2016-04-21 10:29:03,296 p=16991 u=clizarraga |  task path: /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/sudo-plays.yml:36
+2016-04-21 10:29:03,435 p=16991 u=clizarraga |  skipping: [10.9.0.185] => {"changed": false, "skip_reason": "Conditional check failed", "skipped": true}
+2016-04-21 10:29:03,537 p=16991 u=clizarraga |  TASK [Find with awk if UseDNS exists.] *****************************************
+2016-04-21 10:29:03,538 p=16991 u=clizarraga |  task path: /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/sudo-plays.yml:40
+2016-04-21 10:29:10,649 p=16991 u=clizarraga |  changed: [10.9.0.185] => {"changed": true, "cmd": ["grep", "UseDNS/etc/ssh/sshd_config"], "delta": "0:00:00.046198", "end": "2016-04-21 10:29:10.551108", "failed": false, "failed_when_result": false, "rc": 1, "start": "2016-04-21 10:29:10.504910", "stderr": "", "stdout": "", "stdout_lines": [], "warnings": []}
+2016-04-21 10:29:10,655 p=16991 u=clizarraga |  TASK [Add UseDNS no to sshd_config] ********************************************
+2016-04-21 10:29:10,656 p=16991 u=clizarraga |  task path: /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/sudo-plays.yml:45
+2016-04-21 10:29:10,803 p=16991 u=clizarraga |  skipping: [10.9.0.185] => {"changed": false, "skip_reason": "Conditional check failed", "skipped": true}
+2016-04-21 10:29:10,809 p=16991 u=clizarraga |  TASK [Remove useDNS from sshd_config.] *****************************************
+2016-04-21 10:29:10,809 p=16991 u=clizarraga |  task path: /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/sudo-plays.yml:50
+2016-04-21 10:29:10,947 p=16991 u=clizarraga |  skipping: [10.9.0.185] => {"changed": false, "skip_reason": "Conditional check failed", "skipped": true}
+2016-04-21 10:29:10,956 p=16991 u=clizarraga |  TASK [Change timezone] *********************************************************
+2016-04-21 10:29:10,957 p=16991 u=clizarraga |  task path: /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/sudo-plays.yml:54
+2016-04-21 10:29:10,995 p=16991 u=clizarraga |  skipping: [10.9.0.185] => {"changed": false, "skip_reason": "Conditional check failed", "skipped": true}
+2016-04-21 10:29:11,037 p=16991 u=clizarraga |  TASK [Reconfigure dpkg] ********************************************************
+2016-04-21 10:29:11,037 p=16991 u=clizarraga |  task path: /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/sudo-plays.yml:59
+2016-04-21 10:29:11,074 p=16991 u=clizarraga |  skipping: [10.9.0.185] => {"changed": false, "skip_reason": "Conditional check failed", "skipped": true}
+2016-04-21 10:29:11,080 p=16991 u=clizarraga |  TASK [Add hourly cron job from 5 AM to 9 PM] ***********************************
+2016-04-21 10:29:11,081 p=16991 u=clizarraga |  task path: /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/sudo-plays.yml:64
+2016-04-21 10:29:11,132 p=16991 u=clizarraga |  skipping: [10.9.0.185] => {"changed": false, "skip_reason": "Conditional check failed", "skipped": true}
+2016-04-21 10:29:11,142 p=16991 u=clizarraga |  TASK [Send camera_single.py to the rPIs.] **************************************
+2016-04-21 10:29:11,142 p=16991 u=clizarraga |  task path: /shares/tmockler_share/clizarraga/usr/local/ansible/clusters/rPI/playbooks/sudo-plays.yml:68
+2016-04-21 10:29:35,669 p=16991 u=clizarraga |  fatal: [10.9.0.185]: UNREACHABLE! => {"changed": false, "msg": "SSH Error: data could not be sent to the remote host. Make sure this host can be reached over ssh", "unreachable": true}
+2016-04-21 10:29:35,683 p=16991 u=clizarraga |  PLAY [clizarraga_chronos] ******************************************************
+2016-04-21 10:29:35,684 p=16991 u=clizarraga |  skipping: no hosts matched
+2016-04-21 10:29:35,698 p=16991 u=clizarraga |  	to retry, use: --limit @sudo-plays.retry
+
+2016-04-21 10:29:35,699 p=16991 u=clizarraga |  PLAY RECAP *********************************************************************
+2016-04-21 10:29:35,700 p=16991 u=clizarraga |  10.9.0.185                 : ok=2    changed=2    unreachable=1    failed=0   
