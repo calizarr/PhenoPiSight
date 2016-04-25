@@ -18,5 +18,5 @@ EPSCOR_Bramble_GH9C
   * Two Wireless Access Points (WAP) specifically dedicated to the bramble and two others simulcasting for a total of 4 SSIDs to subdivide the bramble. Approximately 45 rPIs per WAP.
   * Because of current location there is a lot of wireless interference so the rPIs have their transmit power turned down to 18 db at all times. It is increased back up to 20 db before copying files over.
   * The interference at the moment doesn't allow for more than about 165 rPIs to be able to be functioning at the same time for most wireless transfers. The cron jobs will take care of taking pictures, however, the centralized server must be in charge of copying pictures to storage so as to be able to manage the bramble.
-  * The bramble is managed using [Ansible](https://www.ansible.com/), a [configuration/deployment IT management engine](https://en.wikipedia.org/wiki/Ansible_(software)) written in Python.
+  * The bramble is managed from a centralized server on the infrastructure using [Ansible](https://www.ansible.com/), a [configuration/deployment IT management engine](https://en.wikipedia.org/wiki/Ansible_(software)) written in Python.
 
