@@ -26,10 +26,10 @@ Installation, setup, and user guide
       * Wireless Transmit Power:
           * Go to a terminal and type:
               * `sudo nano /etc/network/interfaces` under wlan0 type: `wireless-power off`
-              * exit and save the file suing Ctrl+X and agreeing to all prompts.
+              * exit and save the file using Ctrl+X and agreeing to all prompts.
               * This removes all wireless power management which prevents random disconnects.
           * If you want to change it to a lower transmit power to avoid WiFi interferences, use the `interfaces` file in [pi_config/interfaces][].
-          * Generally unnecessary, but if you experience communicating issues having a lower transmit power may be useful.
+          * Generally unnecessary, but if you experience communication issues having a lower transmit power may be useful.
           * The ansible playbook `wireless-power.yml` will copy the file over if you need to change it after all the rPIs are set up.
               * Look at [playbooks folder](playbooks) for more information.
   * Cloning your Raspberry Pi:
@@ -37,6 +37,7 @@ Installation, setup, and user guide
       * Follow any of these guides to backup then restore (clone) your Raspberry PI Image.
           * [Cloning Your Raspberry PI (Windows)][]
           * [Clone Raspberry PI All Operating Systems][]
+          * In general, backup the image then use that image to restore it onto all the other SD cards. You can use Win32DiskImager on Windows or the `dd` tool in Linux.
 
 [this documentation.]: https://www.raspberrypi.org/documentation/linux/filesystem/backup.md
 
