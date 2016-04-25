@@ -23,7 +23,19 @@ Installation, setup, and user guide
                   * The previous GUI WiFi Setup also includes some information on static IP addresses.
               * Also take a look at the file in [pi_config/dhcpcd.conf][] for an idea of what to put in your dhcpcd.conf
                   * Your `domain_name_servers`, `ip_address`, `routers`, and `hostname` will be different
-      * 
+      * Wireless Transmit Power:
+          * Go to a terminal and type:
+              * `sudo nano /etc/network/interfaces` under wlan0 type: `wireless-power off`
+              * exit and save the file suing Ctrl+X and agreeing to all prompts.
+              * This removes all wireless power management which prevents random disconnects.
+          * If you want to change it to a lower transmit power to avoid WiFi interferences, use the `interfaces` file in [pi_config/interfaces][].
+          * Generally unnecessary, but if you experience communicating issues having a lower transmit power may be useful.
+          * The ansible playbook `wireless-power.yml` will copy the file over if you need to change it after all the rPIs are set up.
+              * Look at the [pi_files folder](pi_files) for more information.
+
+### Ansible Setup ###
+  * Depending on the setup of the centralized server that will be launching Ansible, you will need to pick what is best for you from the [Ansible installation documentation][].
+  * I have installed ansible from source using github for a rootless installation.
 
 [Raspberry Pi Installing Operating Systems]: https://www.raspberrypi.org/documentation/installation/installing-images/
 
@@ -40,4 +52,8 @@ Installation, setup, and user guide
 [here]: http://sizious.com/2015/08/28/setting-a-static-ip-on-raspberry-pi-on-raspbian-20150505/
 
 [pi_config/dhcpcd.conf]: pi_config/dhcpcd.conf
+
+[pi_config/interfaces]: pi_config/interfaces
+
+[Ansible installation documentation]: http://docs.ansible.com/ansible/intro_installation.html
 
