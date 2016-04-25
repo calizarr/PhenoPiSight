@@ -48,6 +48,30 @@ Installation, setup, and user guide
 ### Ansible Setup ###
   * Depending on the setup of the centralized server that will be launching Ansible, you will need to pick what is best for you from the [Ansible installation documentation][].
   * I have installed ansible from source using github for a rootless installation.
+  * Ansible setup is rather straightforward and should not be very problematic.
+  
+### Using Ansible To Manage The Bramble ###
+  * So, you've setup your Raspberry PIs and you have installed Ansible, now you need to clone this github repository if you haven't already.
+  * First, a GitHub primer to get you started: [GitHub Introduction: Hello World!][]
+  * Then, once you are finished with that type:
+  * `git clone git@github.com:calizarr/EPSCOR_Bramble_GH9C.git` to clone this repository into a folder named EPSCOR\_Bramble\_GH9C.
+  * The files you'll need from this repository aren't many.
+      * All of the playbooks (yml files) assume that the rPI image directory is `/home/pi/Images/`.
+      * [hosts](hosts) -- [Ansible Inventory][] and needs to be configured for your setup.
+          * I find it useful to declare the localhost as its own group in the inventory file. In this case, it is `clizarraga_chronos` and some of the playbooks use it later. You can change it to your preference or keep using my name for it although I suggest changing it.
+      * ansible.cfg -- should be completely configured for your own setup.
+          * Use it as a guide, but don't copy directly. Generally just stick to ansible defaults unless you need to change them.
+      * Playbooks:
+          * Before changing any playbooks, please read the [ansible playbooks documentation][].
+          * All of the playbooks will need their hosts variable changed, please do so before attempting to run any of them.
+          * copy-pictures.yml -- needs some changes to be useful to your setup.
+              * `img_dir` and `local_dir` need to be changed.
+                  * `img_dir` needs to be changed only if you're not using `/home/pi/Images` on the rPIs as your image destination.
+                  * `local_dir` needs to be changed to where the image files will be stored not on the rPIs.
+          * sudo-plays.yml -- contains true/false variables that need to be changed depending on context.
+              * You might need to change the `Add hourly cron job from 5 AM to 9 PM` task.
+                  * To understand more about cron, read `man cron` and the [Ansible cron module][].
+              * Change the `src:` variable on the `Send camera_single.py to the rPIs` task to the destination of camera_single.py of this repository.
 
 [Raspberry Pi Installing Operating Systems]: https://www.raspberrypi.org/documentation/installation/installing-images/
 
@@ -68,4 +92,12 @@ Installation, setup, and user guide
 [pi_config/interfaces]: pi_config/interfaces
 
 [Ansible installation documentation]: http://docs.ansible.com/ansible/intro_installation.html
+
+[GitHub Introduction: Hello World!]: https://guides.github.com/activities/hello-world/
+
+[Ansible Inventory]: http://docs.ansible.com/ansible/intro_inventory.html
+
+[ansible playbooks documentation]: http://docs.ansible.com/ansible/playbooks_intro.html
+
+[Ansible cron module]: http://docs.ansible.com/ansible/cron_module.html
 
