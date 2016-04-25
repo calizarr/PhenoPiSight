@@ -20,3 +20,12 @@ EPSCOR_Bramble_GH9C
   * The interference at the moment doesn't allow for more than about 165 rPIs to be able to be functioning at the same time for most wireless transfers. The cron jobs on the bramble will manage taking pictures, however, the centralized server must be in charge of copying pictures to storage so as to be able to manage the bramble.
   * The bramble is managed from a centralized server on the infrastructure using [Ansible](https://www.ansible.com/), a [configuration/deployment IT management engine](https://en.wikipedia.org/wiki/Ansible_(software)) written in Python.
 
+## Initial Setup ##
+  * Raspberry PI Setup:
+      * Load the latest version of debian onto the rPIs.
+      * Configure each rPI with their own hostname, WiFi access, IP address (if static), etc.
+          * This repo has bash files in [pi_config](pi_config) that I used for fast configuration of the Raspberry PI. They are very specific to our configuration, but if you want to use them as an idea of how to more quickly configure rPIs please take a look.
+          * The debian version used is Raspbian GNU/Linux 8 (jessie) for these scripts.
+      * At minimum before Ansible can work with the rPIs, they need an openssh-server (`sudo apt-get install openssh-server`); a unique hostname, IP address, or both; ssh keys from the centralized server copied onto them; and a user.
+      * The preferred method is to configure one rPI with all of the settings which are the same across the entire bramble and then clone that image using any of the [available methods](http://www.htpcguides.com/easy-resize-and-back-up-raspberry-pi-sd-card-with-ubuntu/).
+
