@@ -36,7 +36,7 @@
     - debug:
         msg: "Files_to_copy are {{ files_to_copy.stdout_lines }} and their length is {{ files_to_copy.stdout_lines | length }} and the comparison is {{ files_to_copy.stdout_lines | length | int >=1 }}"
 
-    - name: Pull with rsh and rsync from chronos
+    - name: Pull with rsh/ssh and rsync from chronos
       synchronize:
         src: "{{ img_dir }}/{{ item }}"
         dest: "{{ local_dir }}/{{ date.stdout }}/"
