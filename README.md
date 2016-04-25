@@ -38,7 +38,6 @@ EPSCOR_Bramble_GH9C
       * Use the [playbooks (.yml files) here](playbooks) after setting up your ansible!
       * The hosts file will need to be changed entirely to match your setup.
 
-
 [Screenshot of Ganglia]: screenshots/Ganglia-Screenshot.PNG "Ganglia Screen"
 [Ganglia]: http://ganglia.info/ "Ganglia Homepage"
 [Ansible]: https://www.ansible.com/ "Ansible Homepage"
