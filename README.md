@@ -27,6 +27,7 @@ EPSCOR_Bramble_GH9C
       * Configure each rPI with their own hostname, WiFi access, IP address (if static), etc.
           * This repo has bash files in [pi_config](pi_config) that I used for fast configuration of the Raspberry PI. They are very specific to our configuration, but if you want to use them as an idea of how to more quickly configure rPIs please take a look.
           * The debian version used is Raspbian GNU/Linux 8 (jessie) for these scripts.
+          * Use at your own risk.
       * At minimum before Ansible can work with the rPIs, they need an openssh-server (`sudo apt-get install openssh-server`); a unique hostname, IP address, or both; ssh keys from the centralized server copied onto them; and a user.
       * The preferred method is to configure one rPI with all of the settings which are the same across the entire bramble and then clone that image using any of the [available methods][].
   * Centralized server setup:
@@ -34,13 +35,25 @@ EPSCOR_Bramble_GH9C
           * `ssh-copy-id` will be the preferred command to copy keys.
           * If automating, install and use `sshpass` to use the default rPI password without having to input it 180 times.
       * Install Ansible using their documentation.
-          * If you want to use more advanced rsync options (i.e. rsh, controlmaster on rsync) then change the synchronize.py file with the one in the repo after changing the options in it. Use at your own risk.
+          * If you want to use more advanced rsync options (i.e. rsh, controlmaster on rsync) then change the synchronize.py file with the one in the repo after changing the options in it.
+          *  Use at your own risk.
       * Use the [playbooks (.yml files) here](playbooks) after setting up your ansible!
       * The hosts file will need to be changed entirely to match your setup.
+      
+## Things to Know Before Embarking on a Bramble Adventure ##
+  * [How To Install An Image Onto A Raspberry Pi][]
+  * [General Raspberry Pi Documentation][]
+  * [GitHub Introduction][]
 
 [Screenshot of Ganglia]: screenshots/Ganglia-Screenshot.PNG "Ganglia Screen"
 [Ganglia]: http://ganglia.info/ "Ganglia Homepage"
 [Ansible]: https://www.ansible.com/ "Ansible Homepage"
 [configuration/deployment IT management engine]: https://en.wikipedia.org/wiki/Ansible_(software) "Wikipedia on Ansible"
 [available methods]: http://www.htpcguides.com/easy-resize-and-back-up-raspberry-pi-sd-card-with-ubuntu/
+
+[How To Install An Image Onto A Raspberry Pi]: https://www.raspberrypi.org/documentation/installation/installing-images/
+
+[General Raspberry Pi Documentation]: https://www.raspberrypi.org/documentation/
+
+[GitHub Introduction]: https://guides.github.com/activities/hello-world/
 
