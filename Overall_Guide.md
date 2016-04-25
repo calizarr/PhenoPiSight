@@ -31,7 +31,18 @@ Installation, setup, and user guide
           * If you want to change it to a lower transmit power to avoid WiFi interferences, use the `interfaces` file in [pi_config/interfaces][].
           * Generally unnecessary, but if you experience communicating issues having a lower transmit power may be useful.
           * The ansible playbook `wireless-power.yml` will copy the file over if you need to change it after all the rPIs are set up.
-              * Look at the [pi_files folder](pi_files) for more information.
+              * Look at [playbooks folder](playbooks) for more information.
+  * Cloning your Raspberry Pi:
+      * After setting up the first Raspberry Pi, you will want to clone the image and copy it onto all your other Raspberry PI SD Cards.
+      * Follow any of these guides to backup then restore (clone) your Raspberry PI Image.
+          * [Cloning Your Raspberry PI (Windows)][]
+          * [Clone Raspberry PI All Operating Systems][]
+
+[this documentation.]: https://www.raspberrypi.org/documentation/linux/filesystem/backup.md
+
+[Cloning Your Raspberry PI (Windows)]: http://lifehacker.com/how-to-clone-your-raspberry-pi-sd-card-for-super-easy-r-1261113524
+
+[Clone Raspberry PI All Operating Systems]: http://www.htpcguides.com/easy-resize-and-back-up-raspberry-pi-sd-card-with-ubuntu/
 
 ### Ansible Setup ###
   * Depending on the setup of the centralized server that will be launching Ansible, you will need to pick what is best for you from the [Ansible installation documentation][].
