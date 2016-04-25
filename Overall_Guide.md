@@ -22,7 +22,7 @@ Installation, setup, and user guide
               * Static IP Addresses are a bit more complicated but they are documented [here][].
                   * The previous GUI WiFi Setup also includes some information on static IP addresses.
               * Also take a look at the file in [pi_config/dhcpcd.conf][] for an idea of what to put in your dhcpcd.conf
-                  * Your domain_name\_servers, ip_address, routers, and hostname will be different
+                  * Your `domain_name_servers`, `ip_address`, `routers`, and `hostname` will be different
       * 
 
 [Raspberry Pi Installing Operating Systems]: https://www.raspberrypi.org/documentation/installation/installing-images/
