@@ -11,7 +11,7 @@
     restart_ganglia: false
     restart_ssh: false
     timezone: US/Central
-    timezone_change: false
+    timezone_change: true
     cron_add: false
     python_script: true
     
