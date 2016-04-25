@@ -11,6 +11,7 @@ EPSCOR_Bramble_GH9C
       * One Raspberry PI (omegabackup) kept outside with monitor and keyboard for quick maintenance.
       * One Raspberry PI (alphabackup) kept for testing new scripts to be sent to rPIs.
       * One Raspberry PI (serverpi) kept to be the server for [ganglia](http://ganglia.info/) -- It collects data from the bramble and transmists it to a ganglia host which allows a broad overview of rPI load, uptime, etc. over a given time interval.
+      * Ganglia screenshot:
       
 ![Screenshot of Ganglia](screenshots/Ganglia-Screenshot.PNG)
 
