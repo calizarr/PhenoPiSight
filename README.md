@@ -34,8 +34,6 @@ EPSCOR_Bramble_GH9C
           * If automating, install and use `sshpass` to use the default rPI password without having to input it 180 times.
       * Install Ansible using their documentation.
           * If you want to use more advanced rsync options (i.e. rsh, controlmaster on rsync) then change the synchronize.py file with the one in the repo after changing the options in it. Use at your own risk.
-      * Use the playbooks (.yml files) here after setting up your ansible!
+      * Use the [playbooks (.yml files) here](playbooks) after setting up your ansible!
       * The hosts file will need to be changed entirely to match your setup.
-      
-## Ansible Playbooks and Bash Script ##
 
