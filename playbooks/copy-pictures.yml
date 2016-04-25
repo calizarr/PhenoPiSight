@@ -42,11 +42,11 @@
         dest: "{{ local_dir }}/{{ date.stdout }}/"
         mode: pull
         use_ssh_args: yes
-        ssh_args: no
+        ssh_args: yes
         rsync_opts:
-          - "--rsh=rsh"
+          # - "--rsh=rsh"
           - "--remove-source-files"
-          - "--timeout=30"          
+          - "--timeout=30"
 
       when: files_to_copy['stdout_lines'] | length | int >= 1
       with_items:
