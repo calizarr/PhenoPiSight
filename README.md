@@ -28,4 +28,14 @@ EPSCOR_Bramble_GH9C
           * The debian version used is Raspbian GNU/Linux 8 (jessie) for these scripts.
       * At minimum before Ansible can work with the rPIs, they need an openssh-server (`sudo apt-get install openssh-server`); a unique hostname, IP address, or both; ssh keys from the centralized server copied onto them; and a user.
       * The preferred method is to configure one rPI with all of the settings which are the same across the entire bramble and then clone that image using any of the [available methods](http://www.htpcguides.com/easy-resize-and-back-up-raspberry-pi-sd-card-with-ubuntu/).
+  * Centralized server setup:
+      * Generate ssh-key for user that will interact with the bramble.
+          * `ssh-copy-id` will be the preferred command to copy keys.
+          * If automating, install and use `sshpass` to use the default rPI password without having to input it 180 times.
+      * Install Ansible using their documentation.
+          * If you want to use more advanced rsync options (i.e. rsh, controlmaster on rsync) then change the synchronize.py file with the one in the repo after changing the options in it. Use at your own risk.
+      * Use the playbooks (.yml files) here after setting up your ansible!
+      * The hosts file will need to be changed entirely to match your setup.
+      
+## Ansible Playbooks and Bash Script ##
 
