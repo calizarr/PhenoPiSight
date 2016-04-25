@@ -1,6 +1,8 @@
 Files on the Raspberry PIs
 ==========================
 
+# All of these files when used belong on the Raspberry PI!!! #
+
 ### Camera prefix files ###
 
   * camera.py is deprecated. It used to be for timelapse photos controlled by python on the rPI instead of a cronjob.
