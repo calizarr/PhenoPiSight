@@ -7,7 +7,7 @@
   tasks:
     - name: Transfer local interfaces to /etc/network/interfaces to the Raspberry PIs.
       copy:
-        src=/media/Raspberry_Pi/Pi/interfaces
+        src=/home/clizarraga/Projects/ESPCOR_Bramble_GH9C/pi_config/interfaces
         dest=/etc/network/interfaces
 
     - name: Reboot PIs

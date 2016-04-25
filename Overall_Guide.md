@@ -6,7 +6,7 @@ Installation, setup, and user guide
   * To first configure the Raspberry Pi which will be used to make the image to clone onto all the other Raspberry PIs follow this documentation: [Raspberry Pi Installing Operating Systems][]
   * I used [debian jessie][] and would recommend it.
   * To avoid problems in the future, make sure that your SD card used for cloning is the smallest SD card you have. Even if they claim to be of the same size -- 8 GBs is not the same across all SD cards.
-      * Linux Terminal: `df -h` check /dev/root and view look for the Size parameter.
+      * Linux Terminal: `df -h` check /dev/root and look for the Size parameter.
       * Windows: Go into Windows Explorer, Right click the SD card and check the capacity.
   * Setting up your Raspberry Pi:
       * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI capable monitor.
@@ -20,9 +20,10 @@ Installation, setup, and user guide
               * We also gave ours static IP addresses from 10.9.0.11 to 10.9.0.190.
               * Given the density of our bramble we had to provide static IP addresses, but it may not be necessary otherwise.
               * Static IP Addresses are a bit more complicated but they are documented [here][].
+                  * The previous GUI WiFi Setup also includes some information on static IP addresses.
               * Also take a look at the file in [pi_config/dhcpcd.conf][] for an idea of what to put in your dhcpcd.conf
                   * Your domain_name\_servers, ip_address, routers, and hostname will be different
-              * 
+      * 
 
 [Raspberry Pi Installing Operating Systems]: https://www.raspberrypi.org/documentation/installation/installing-images/
 
