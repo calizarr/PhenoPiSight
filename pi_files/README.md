@@ -1,7 +1,7 @@
 Files on the Raspberry PIs
 ==========================
 
-### camera*.* ###
+### Camera prefix files ###
 
   * camera.py is deprecated. It used to be for timelapse photos controlled by python on the rPI instead of a cronjob.
   * camera.sh is a quick shell script camera test script. Can also use `raspistill -v -set -o cam.jpg`
