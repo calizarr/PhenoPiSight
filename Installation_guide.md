@@ -85,10 +85,11 @@ Installation, setup, and user guide
   * Ansible setup is rather straightforward and should not be very problematic.
   
 ### Using Ansible To Manage The Bramble ###
-  * So, you've setup your Raspberry PIs and you have installed Ansible, now you need to clone this github repository if you haven't already.
+  * So, you've setup your Raspberry PIs and you have installed Ansible, now you need to clone this github repository if you haven't already. This section assumes we are on the Ansible centralized server.
   * First, a GitHub primer to get you started: [GitHub Introduction: Hello World!][]
-  * Then, once you are finished with that type:
-  * `git clone git@github.com:calizarr/EPSCOR_Bramble_GH9C.git` to clone this repository into a folder named EPSCOR\_Bramble\_GH9C.
+  * Then, once you are finished with that open a terminal:
+      * type or copy/paste: `git clone git@github.com:calizarr/EPSCOR_Bramble_GH9C.git` to clone this repository into a folder named EPSCOR\_Bramble\_GH9C.
+      * If you want to clone it into a different folder name, type: `git clone git@github.com:calizarr/EPSCOR_Bramble_GH9C.git <YourFolderName>`
   * The files you'll need from this repository aren't many.
       * All of the playbooks (yml files) assume that the rPI image directory is `/home/pi/Images/`.
       * [hosts](hosts) -- [Ansible Inventory][] and needs to be configured for your setup.
