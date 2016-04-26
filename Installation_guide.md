@@ -258,8 +258,6 @@ Installation, setup, and user guide
 
 [Ansible cron module]: http://docs.ansible.com/ansible/cron_module.html
 
-[list of TZ database timezones]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
 [wireless-power.yml]: playbooks/wireless-power.yml
 
 [interfaces]: pi_files/interfaces
@@ -267,6 +265,8 @@ Installation, setup, and user guide
 [take-pictures.yml]: playbooks/take-pictures.yml
 
 [playbook-ansible.sh]: playbooks/playbook-ansible.sh
+
+[list of TZ database timezones]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 ### Final Notes ###
   * You can manage the bramble via Ansible with more playbooks that you can create yourself using the documentation provided above. You can also use the playbooks as a template for future playbooks.
