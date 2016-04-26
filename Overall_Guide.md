@@ -29,41 +29,42 @@ Installation, setup, and user guide
   * Follow all the prompts after installing Raspbian/Debian Jessie onto the Original Raspberry Pi, then continue onward.
 
 ##### Setting up your Raspberry Pi: #####
-      * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI capable monitor.
-      * WiFi:
-          * Set up the network following instructions for GUI: [GUI WiFi Setup][]
-          * If using the command line follow this set of instructions: [Raspberry PI CLI setup][]
-      * Camera:
-          * [Follow these instructions for enabling and installing the camera.][]
-      * Hostname:
-          * [Change hostname using command line][]
-          * Make sure to give your Raspberry PI a unique hostname.
-              * Ours go from ShakoorCamera11 to ShakoorCamera190 so that they do not conflict.
-              * We also gave ours static IP addresses from 10.9.0.11 to 10.9.0.190.
-              * Given the density of our bramble we had to provide static IP addresses, but it may not be necessary otherwise.
-              * Static IP Addresses are a bit more complicated but they are documented [here][].
-                  * The previous GUI WiFi Setup also includes some information on static IP addresses.
-              * Also take a look at the file in [pi_config/dhcpcd.conf][] for an idea of what to put in your dhcpcd.conf
-                  * Your `domain_name_servers`, `ip_address`, `routers`, and `hostname` will be different
-      * Wireless Transmit Power:
-          * Go to a terminal and type:
-              * `sudo nano /etc/network/interfaces` under wlan0 type: `wireless-power off`
-              * exit and save the file using Ctrl+X and agreeing to all prompts.
-              * This removes all wireless power management which prevents random disconnects.
-          * If you want to change it to a lower transmit power to avoid WiFi interferences, use the `interfaces` file in [pi_config/interfaces][].
-          * This is generally unnecessary, but if you experience communication issues having a lower transmit power may be useful.
-          * The ansible playbook `wireless-power.yml` will copy the file over if you need to change it after all the rPIs are set up.
-              * Look at [playbooks folder](playbooks) for more information.
-  * Cloning your Raspberry Pi:
-      * After setting up the first Raspberry Pi, you will want to clone the image and copy it onto all your other Raspberry PI SD Cards.
+  * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI capable monitor.
+  * WiFi:
+      * Set up the network following instructions for GUI: [GUI WiFi Setup][]
+      * If using the command line follow this set of instructions: [Raspberry PI CLI setup][]
+  * Camera:
+      * [Follow these instructions for enabling and installing the camera.][]
+  * Hostname:
+      * [Change hostname using command line][]
+      * Make sure to give your Raspberry PI a unique hostname.
+          * Ours go from ShakoorCamera11 to ShakoorCamera190 so that they do not conflict.
+          * We also gave ours static IP addresses from 10.9.0.11 to 10.9.0.190.
+          * Given the density of our bramble we had to provide static IP addresses, but it may not be necessary otherwise.
+          * Static IP Addresses are a bit more complicated but they are documented [here][].
+              * The previous GUI WiFi Setup also includes some information on static IP addresses.
+          * Also take a look at the file in [pi_config/dhcpcd.conf][] for an idea of what to put in your dhcpcd.conf
+              * Your `domain_name_servers`, `ip_address`, `routers`, and `hostname` will be different
+  * Wireless Transmit Power:
+      * Go to a terminal and type:
+          * `sudo nano /etc/network/interfaces` under wlan0 type: `wireless-power off`
+          * exit and save the file using Ctrl+X and agreeing to all prompts.
+          * This removes all wireless power management which prevents random disconnects.
+      * If you want to change it to a lower transmit power to avoid WiFi interferences, use the `interfaces` file in [pi_config/interfaces][].
+      * This is generally unnecessary, but if you experience communication issues having a lower transmit power may be useful.
+      * The ansible playbook `wireless-power.yml` will copy the file over if you need to change it after all the rPIs are set up.
+          * Look at [playbooks folder](playbooks) for more information.
+
+##### Cloning your Raspberry Pi: #####
+  * After setting up the first Raspberry Pi, you will want to clone the image and copy it onto all your other Raspberry PI SD Cards.
       * Follow any of these guides to backup then restore (clone) your Raspberry PI Image.
           * [Cloning Your Raspberry PI (Windows)][]
           * [Clone Raspberry PI All Operating Systems][]
-          * In general, backup the image then use that image to restore it onto all the other SD cards. You can use Win32DiskImager on Windows or the `dd` tool in Linux.
-      * After restoring/cloning each image onto an SD card, make sure to change its hostname to be unique. You can do this two ways on either a Linux or Apple machine:
-          * Navigate to the folder where the SD card is mounted, `/media` for Linux and `/Volumes` for Apple.
-              * Follow the instructions in the hostname section above.
-              * Ignore the section with `sudo /etc/init.d/hostname.sh` since the sd card isn't booted up into the operating system at the moment and when it gets put into a rPI and is powered on is essentially the same.
+      * In general, backup the image then use that image to restore it onto all the other SD cards. You can use Win32DiskImager on Windows or the `dd` tool in Linux.
+  * After restoring/cloning each image onto an SD card, make sure to change its hostname to be unique. You can do this two ways on either a Linux or Apple machine:
+      * Navigate to the folder where the SD card is mounted, `/media` for Linux and `/Volumes` for Apple.
+          * Follow the instructions in the hostname section above.
+          * Ignore the section with `sudo /etc/init.d/hostname.sh` since the sd card isn't booted up into the operating system at the moment and when it gets put into a rPI and is powered on is essentially the same.
           * Put the SD card into a rPI connected to a monitor, keyboard, and mouse and follow the hostname change section above.
 
 [this documentation.]: https://www.raspberrypi.org/documentation/linux/filesystem/backup.md
