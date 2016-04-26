@@ -183,6 +183,7 @@ Installation, setup, and user guide
   * Lets start by making a hosts file also known as the [Ansible Inventory][].
       * A sample hosts file from our configuration is here: [hosts](hosts).
           * All our rPIs are referred to by their IP address, but they don't need to be if your network identifies them by hostname.
+          * If you could previously connect via ssh by hostname, you don't need ip addresses. You could also `ping <HostnameOfRaspberryPi>` to test.
       * Use it as a guide, but almost everything in the hosts file must be different and specific to your setup.
       * I find it useful to define a group with localhost (the server) for use in playbooks. In our hosts file, it is the `clizarraga_chronos` group.
   * If you need to use proxy settings or specific ssh settings, then you need to edit the [ansible configuration file][].
