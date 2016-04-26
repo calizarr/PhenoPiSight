@@ -27,11 +27,9 @@ Installation, setup, and user guide
       * Linux Terminal: Open a terminal, type or copy/paste `df -h`, and look at the  `/dev/root` Filesystem and its `Size` parameter.
       * Windows: Go into Windows Explorer, Right click the SD card and check the capacity.
   * Follow all the prompts after installing Raspbian/Debian Jessie onto the Original Raspberry Pi, then continue onward.
-
-##### * Setting up your Raspberry Pi: #####
-
+  * ##### Setting up your Raspberry Pi: #####
       * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI capable monitor.
-      * WiFi:
+      * ###### WiFi: ######
           * Set up the network following instructions for GUI: [GUI WiFi Setup][]
           * If using the command line follow this set of instructions: [Raspberry PI CLI setup][]
       * Camera:
