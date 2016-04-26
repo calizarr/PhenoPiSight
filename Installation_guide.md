@@ -86,7 +86,7 @@ Installation, setup, and user guide
           * Exit and save the file with nano. (`Ctrl+X`)
           * This removes all wireless power management which prevents random disconnects.
   * **OpenSSH Server**
-      * open a terminal and type or copy/paste: `sudo apt-get install openssh-server`
+      * Open a terminal and type or copy/paste: `sudo apt-get install openssh-server`
       * Test the ssh server by logging in with: `ssh pi@localhost`
       * To also test if your hostname works check: `ssh pi@<YourHostnameHere>`
       * Finally, if hostname doesn't work, find your [Raspberry Pi IP address][] and try: `ssh pi@<YourIpAddressHere>`
