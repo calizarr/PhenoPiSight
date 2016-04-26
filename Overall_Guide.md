@@ -32,28 +32,26 @@ Installation, setup, and user guide
   * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI capable monitor.
   * **WiFi:**
       * Set up the network following instructions for GUI: [GUI WiFi Setup][]
-      * If using the command line follow this set of instructions: [Raspberry PI CLI setup][]
+      * If using the command line, follow this set of instructions: [Raspberry PI CLI setup][]
   * **Camera:**
       * [Follow these instructions for enabling and installing the camera.][]
   * **Hostname:**
       * [Change hostname using command line][]
       * Make sure to give your Raspberry PI a unique hostname.
-          * Ours go from ShakoorCamera11 to ShakoorCamera190 so that they do not conflict.
-          * We also gave ours static IP addresses from 10.9.0.11 to 10.9.0.190.
+          * Our rPIs hostnames range from ShakoorCamera11 to ShakoorCamera190 so that they do not conflict with each other.
+          * We also gave our rPIs static IP addresses ranging from 10.9.0.11 to 10.9.0.190.
           * Given the density of our bramble we had to provide static IP addresses, but it may not be necessary otherwise.
           * Static IP Addresses are a bit more complicated but they are documented [here][].
-              * The previous GUI WiFi Setup also includes some information on static IP addresses.
+              * The previous GUI WiFi Setup also includes information on how to set up static IP addresses via the GUI.
           * Also take a look at the file in [pi_config/dhcpcd.conf][] for an idea of what to put in your dhcpcd.conf
+              * Most of it is default boilerplate, the important section for static IP addresses starts at line 43.
               * Your `domain_name_servers`, `ip_address`, `routers`, and `hostname` will be different
   * **Wireless Transmit Power:**
-      * Go to a terminal and type:
-          * `sudo nano /etc/network/interfaces` under wlan0 type: `wireless-power off`
-          * exit and save the file using Ctrl+X and agreeing to all prompts.
+      * Open a terminal:
+          * type or copy/paste: `sudo nano /etc/network/interfaces` in a new line under `wlan0`
+          * type or copy/paste: `wireless-power off`
+          * Exit and save the file with nano. (`Ctrl+X`)
           * This removes all wireless power management which prevents random disconnects.
-      * If you want to change it to a lower transmit power to avoid WiFi interferences, use the `interfaces` file in [pi_config/interfaces][].
-      * This is generally unnecessary, but if you experience communication issues having a lower transmit power may be useful.
-      * The ansible playbook `wireless-power.yml` will copy the file over if you need to change it after all the rPIs are set up.
-          * Look at [playbooks folder](playbooks) for more information.
 
 ##### Cloning your Raspberry Pi: #####
   * After setting up the first Raspberry Pi, you will want to clone the image and copy it onto all your other Raspberry PI SD Cards.
