@@ -105,8 +105,9 @@ Installation, setup, and user guide
           * Open a terminal and type or copy/paste: `mkdir /home/pi/Images`
       * Alter the [python camera script][] to suit your needs.
           * Comment out lines 143-144 and uncomment line 145
-          * Line 143-145 look like: ```        grid = convert_ip(get_ip(), width, height, offset)
-                  filename = "{hostname}_Y{y}_X{x}_{now}.png".format(hostname=hostname, x=grid[1], y=grid[0], now=now.strftime("%Y-%m-%d-%H-%M"))```
+          * Line 143-145 look like: 
+          ```grid = convert_ip(get_ip(), width, height, offset)
+          filename = "{hostname}_Y{y}_X{x}_{now}.png".format(hostname=hostname, x=grid[1], y=grid[0], now=now.strftime("%Y-%m-%d-%H-%M"))```
           * Line 145 looks like: `# filename = hostname+"_"+now.strftime("%Y-%m-%d-%H-%M")+".png"`
 
 [Raspberry Pi IP address]: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address
