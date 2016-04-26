@@ -87,6 +87,7 @@ Installation, setup, and user guide
   * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI capable monitor.
   * **WiFi:**
       * Set up the network following instructions using the Graphical User Interface (GUI): [GUI WiFi Setup][]
+          * Look only under the **New Wifi Interface** heading.
       * If using the command line interface (CLI), follow this set of instructions: [Raspberry PI CLI setup][]
   * **Camera:**
       * [Follow these instructions for enabling and installing the camera.][]
