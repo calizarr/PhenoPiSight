@@ -128,7 +128,14 @@ Installation, setup, and user guide
       * A sample configuration file is here: [config](playbooks/ansible.cfg)
       * [Default configuration file from Ansible.][]
       * Most of the changes are for ssh options because of connectivity and interference issues. Head to the [playbooks folder readme][] for more information.
+
+[Ansible Inventory]: http://docs.ansible.com/ansible/intro_inventory.html
+
+[playbooks folder readme]: playbooks/README.md
   
+[ansible configuration file]: http://docs.ansible.com/ansible/intro_configuration.html
+
+[Default configuration file from Ansible.]: https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg
   
 ##### CURRENTLY BEING REWRITTEN #####
 
@@ -176,15 +183,7 @@ Installation, setup, and user guide
 
 [GitHub Introduction: Hello World!]: https://guides.github.com/activities/hello-world/
 
-[Ansible Inventory]: http://docs.ansible.com/ansible/intro_inventory.html
 
 [ansible playbooks documentation]: http://docs.ansible.com/ansible/playbooks_intro.html
 
 [Ansible cron module]: http://docs.ansible.com/ansible/cron_module.html
-
-[ansible configuration file]: http://docs.ansible.com/ansible/intro_configuration.html
-
-[playbooks folder readme]: playbooks/README.md
-
-[Default configuration file from Ansible.]: https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg
-
