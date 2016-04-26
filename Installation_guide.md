@@ -256,7 +256,8 @@ Installation, setup, and user guide
 [playbook-ansible.sh]: playbooks/playbook-ansible.sh
 
 ### Final Notes ###
-  * You can manage the bramble via Ansible with more playbooks that you can create yourself using the documentation provided above.
+  * You can manage the bramble via Ansible with more playbooks that you can create yourself using the documentation provided above. You can also use the playbooks as a template for future playbooks.
   * A good way to test some Ansible commands beforehand is to use Ansible modules with [ad-hoc commands][]
+      * `ansible -m ping all` or `ansible -m command -a ls` are good examples.
 
 [ad-hoc commands]: http://docs.ansible.com/ansible/intro_adhoc.html
