@@ -22,6 +22,9 @@ Installation, setup, and user guide
   * Centralized Linux server/desktop to run Ansible.
       * Networked and able to connect to the rPIs.
       * Must be on 24/7
+      * [Ansible Requirements][]
+
+[Ansible Requirements]: http://docs.ansible.com/ansible/intro_installation.html#control-machine-requirements
 
 ### Raspberry Pi Setup ###
   * [Raspberry PI Quick Start Guide][]
