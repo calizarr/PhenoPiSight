@@ -71,7 +71,7 @@ Installation, setup, and user guide
           * Instead, press `Win+R` or open a command prompt, then type `diskmgmt.msc` and look for a Disk about the size of your SD card.
           * ![windows_diskmgmt_capacity.png][]
   * Follow all the prompts after installing Raspbian/Debian Jessie onto the Original Raspberry Pi, then continue onward.
-5A
+
 [size_screenshot]: screenshots/sd_card_size.png
 
 [windows_explorer_capacity]: screenshots/windows_explorer_capacity.png
