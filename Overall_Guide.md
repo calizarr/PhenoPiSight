@@ -6,7 +6,7 @@ Installation, setup, and user guide
   * To first configure the Raspberry Pi which will be used to make the image to clone onto all the other Raspberry PIs follow this documentation: [Raspberry Pi Installing Operating Systems][]
   * [Debian jessie][] is the recommmended raspbian distribution.
   * To avoid problems in the future, make sure that your SD card used for cloning is the smallest SD card you have. Even if they claim to be of the same size -- 8 GBs is not the same across all SD cards.
-      * Linux Terminal: `df -h` check /dev/root and look for the Size parameter.
+      * Linux Terminal: Open a terminal and type `df -h` look at the  `/dev/root` and look for the `Size` parameter.
       * Windows: Go into Windows Explorer, Right click the SD card and check the capacity.
   * Follow all the prompts after installing Raspbian/Debian Jessie onto the Original Raspberry Pi, then continue onward.
   * Setting up your Raspberry Pi:
