@@ -7,7 +7,7 @@ Installation, setup, and user guide
       * [Beginnner's Guide to Nano][]
       * [Nano Basics][]
   * Many of the Raspberry Pi camera commands can be better used with the Python library included with Raspbian. The Raspberry Pi foundation also provides a [quick python tutorial][].
-  * Feel free to refer back to these links as you go through the installation steps for the Raspberry Pi as well as Ansible.
+  * Feel free to refer back to these links as you go through the installation steps for the Raspberry Pi.
 
 [quick tutorial]: https://www.raspberrypi.org/documentation/usage/terminal/README.md
 
