@@ -223,7 +223,7 @@ Installation, setup, and user guide
       * [take-pictures.yml][] -- Sends command to the hosts to call `camera_single.py`.
   * **Playbook-Ansible Bash Script**
       * The [playbook-ansible.sh][] script needs two major things:
-          * If Ansible is installed via the package manager,
+          * If Ansible is installed via the package manager
               * Comment out line 2 of the script
                   * `source /home/clizarraga/usr/local/ansible/hacking/env-setup`
               * Uncomment line 3 of the script
