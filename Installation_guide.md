@@ -9,6 +9,11 @@ Installation, setup, and user guide
   * Many of the Raspberry Pi camera commands can be better used with the Python library included with Raspbian. The Raspberry Pi foundation also provides a [quick python tutorial][].
   * Feel free to refer back to these links as you go through the installation steps for the Raspberry Pi.
   * Also, when instructions are surrounded in brackets `<>` such as `<YourInputHere>` type your particular name or folder name there without the brackets.
+  * You will also need an introduction to GitHub to clone and use this repository.
+      * GitHub primer to get you started: [GitHub Introduction: Hello World!][]
+  * To clone this GitHub repository: 
+      * Type or copy/paste: `git clone git@github.com:calizarr/EPSCOR_Bramble_GH9C.git` to clone this repository into a folder named EPSCOR\_Bramble\_GH9C.
+      * If you want to clone it into a different folder name, type: `git clone git@github.com:calizarr/EPSCOR_Bramble_GH9C.git <YourFolderName>`
 
 [quick tutorial]: https://www.raspberrypi.org/documentation/usage/terminal/README.md
 
@@ -118,6 +123,9 @@ Installation, setup, and user guide
 [Follow these instructions for enabling and installing the camera.]: https://www.raspberrypi.org/documentation/usage/camera/README.md
   
 ### Using Ansible To Manage The Bramble ###
+
+#### General Ansible Configuration Files ####
+
   * You can now start to manage your Bramble with Ansible on the centralized server.
   * Lets start by making a hosts file also known as the [Ansible Inventory][].
       * A sample hosts file from our configuration is here: [hosts](hosts).
@@ -136,18 +144,15 @@ Installation, setup, and user guide
 [ansible configuration file]: http://docs.ansible.com/ansible/intro_configuration.html
 
 [Default configuration file from Ansible.]: https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg
+
+#### Ansible Playbooks Files ####
   
 ##### CURRENTLY BEING REWRITTEN #####
 
   * So, you've setup your Raspberry PIs and you have installed Ansible, now you need to clone this github repository if you haven't already. This section assumes we are on the Ansible centralized server.
-  * First, a GitHub primer to get you started: [GitHub Introduction: Hello World!][]
   * Then, once you are finished with that open a terminal:
-      * type or copy/paste: `git clone git@github.com:calizarr/EPSCOR_Bramble_GH9C.git` to clone this repository into a folder named EPSCOR\_Bramble\_GH9C.
-      * If you want to clone it into a different folder name, type: `git clone git@github.com:calizarr/EPSCOR_Bramble_GH9C.git <YourFolderName>`
   * The files you'll need from this repository aren't many.
       * All of the playbooks (yml files) assume that the rPI image directory is `/home/pi/Images/`.
-      * [hosts](hosts) -- needs to be configured for your setup.
-          * I find it useful to declare the localhost as its own group in the inventory file. In this case, it is `clizarraga_chronos` and some of the playbooks use it later. You can change it to your preference or keep using my name for it although I suggest changing it.
       * ansible.cfg -- should be completely configured for your own setup.
           * Use it as a guide, but don't copy directly. Generally just stick to ansible defaults unless you need to change them.
       * Playbooks:
