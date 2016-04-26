@@ -197,6 +197,7 @@ Installation, setup, and user guide
           * `gather_facts` doesn't need to be false if you don't have connectivity issues.
           * `when:` determines when a task will run if the variable after it is false, it will not run.
           * `become:` determines if the task will be run as a superuser.
+          * `hosts: ` needs to be changed to your appropriate inventory group.
       * [copy-pictures.yml][] -- Needs to change to be specific to the user setup.
           * Variables `img_dir` and `local_dir` need to be changed.
               * `img_dir` needs to be changed only if you're not using `/home/pi/Images` on the rPIs as your image destination.
@@ -216,6 +217,9 @@ Installation, setup, and user guide
               * Change the `hosts:` to your localhost designation in your hosts/inventory file.
               * Change the `jobs="cd <YourPlaybooksDirectoryHere> && time bash -x playbook-ansible.sh -i <YourHostsFileHere> -vv`
                   * The `-f 2` option forces Ansible to do only two at a time instead of its usual 5. You can also set it to more processes at once if you want.
+      * [wireless-power.yml][] -- Sends the [interfaces][] file to the rPIs.
+          * Change the `src:` to the absolute path of the `interfaces` file.
+      * [take-pictures.yml][] -- Sends command to the hosts to call `camera_single.py`.
               
 [playbooks folder]: playbooks/
 
@@ -230,3 +234,9 @@ Installation, setup, and user guide
 [Ansible cron module]: http://docs.ansible.com/ansible/cron_module.html
 
 [List of TZ data timezone variables]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+[wireless-power.yml]: playbooks/wireless-power.yml
+
+[interfaces]: pi_files/interfaces
+
+[take-pictures.yml]: playbooks/take-pictures.yml
