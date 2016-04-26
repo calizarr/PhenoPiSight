@@ -80,7 +80,8 @@ Installation, setup, and user guide
 
 ### Ansible Setup ###
   * Depending on the setup of the centralized server that will be launching Ansible, you will need to pick what is best for you from the [Ansible installation documentation][].
-  * I have installed ansible from source using github for a rootless installation.
+  * We installed ansible from github for a rootless (no privileges) installation.
+      * If installed on a server infrastructure, if you do not have access to an administrator or administrator privileges, a github installation may be the best option for you.
   * Ansible setup is rather straightforward and should not be very problematic.
   
 ### Using Ansible To Manage The Bramble ###
