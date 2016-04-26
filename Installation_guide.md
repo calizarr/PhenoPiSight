@@ -174,7 +174,7 @@ Installation, setup, and user guide
       * All images on the rPI are stored in `/home/pi/Images/`
   * **Playbooks**
       * For all playbooks, `gather_facts` doesn't need to be false if you don't have connectivity issues.
-      * The `when:` determines when a task will run if the variable after it is false, it will not run.
+      * `when:` determines when a task will run if the variable after it is false, it will not run.
       * `become:` determines if the task will be run as a superuser.
       * [copy-pictures.yml][] -- Needs to change to be specific to the user setup.
           * Variables `img_dir` and `local_dir` need to be changed.
