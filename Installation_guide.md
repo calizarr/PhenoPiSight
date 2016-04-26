@@ -20,7 +20,7 @@ Installation, setup, and user guide
 
 ### Raspberry Pi Setup ###
   * [Raspberry PI Quick Start Guide][]
-  * First configure the Raspberry Pi which will be used to make the image to clone onto all the other Raspberry PIs.
+  * First, we need to install an operating system onto the Original Raspberry Pi sd card.
   * **Follow this documentation:** [Raspberry Pi Installing Operating Systems][]
   * [Debian jessie][] is the recommmended raspbian distribution.
   * ***To avoid problems in the future, make sure that your SD card used for cloning is the smallest SD card you have. Even if they claim to be of the same size -- 8 GBs is not the same across all SD cards.***
