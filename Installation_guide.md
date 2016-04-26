@@ -260,7 +260,7 @@ Installation, setup, and user guide
 
 [wireless-power.yml]: playbooks/wireless-power.yml
 
-[interfaces]: pi_files/interfaces
+[interfaces]: pi_config/interfaces
 
 [take-pictures.yml]: playbooks/take-pictures.yml
 
