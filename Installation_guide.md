@@ -187,6 +187,7 @@ Installation, setup, and user guide
 
 #### Ansible Playbooks ####
   * So, you've setup your Raspberry PIs and you have installed and set up Ansible with your own hosts and configuration file.
+      * You should test your ansible install by running `ansible -m ping all` from a terminal on the Ansible server.
   * This repository contains a [playbooks folder][] with playbooks made to manage the Raspberry Pis via the centralized server.
       * Before changing any playbooks, please read the [ansible playbooks documentation][].
   * The playbooks have a lot of assumptions built into them:
@@ -220,6 +221,16 @@ Installation, setup, and user guide
       * [wireless-power.yml][] -- Sends the [interfaces][] file to the rPIs.
           * Change the `src:` to the absolute path of the `interfaces` file on your Ansible server.
       * [take-pictures.yml][] -- Sends command to the hosts to call `camera_single.py`.
+  * **Playbook-Ansible Bash Script**
+      * The [playbook-ansible.sh][] script needs two major things:
+          * If Ansible is installed via the package manager,
+              * Comment out line 2 of the script
+                  * `source /home/clizarraga/usr/local/ansible/hacking/env-setup`
+              * Uncomment line 3 of the script
+                  * `# ansible-playbook=/usr/bin/ansible-playbook`
+          * Otherwise, if you used the github installation mechanism:
+              * Replace `/home/clizarraga/usr/local/ansible/hacking/env-setup` with the `<path/to/ansible>/hacking/env-setup`
+          * The script uses a `logs` directory to store logs named by playbook and `year-month-date`. Make sure there is a logs directory in the path that the script is in. You can make one by running `mkdir logs` in the path to the bash script.
               
 [playbooks folder]: playbooks/
 
@@ -240,3 +251,5 @@ Installation, setup, and user guide
 [interfaces]: pi_files/interfaces
 
 [take-pictures.yml]: playbooks/take-pictures.yml
+
+[playbook-ansible.sh]: playbooks/playbook-ansible.sh
