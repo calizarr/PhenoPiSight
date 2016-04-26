@@ -8,6 +8,7 @@ Installation, setup, and user guide
       * [Nano Basics][]
   * Many of the Raspberry Pi camera commands can be better used with the Python library included with Raspbian. The Raspberry Pi foundation also provides a [quick python tutorial][].
   * Feel free to refer back to these links as you go through the installation steps for the Raspberry Pi.
+  * Also, when instructions are surrounded in brackets `<>` such as `<YourInputHere>` type your particular name or folder name there without the brackets.
 
 [quick tutorial]: https://www.raspberrypi.org/documentation/usage/terminal/README.md
 
@@ -25,6 +26,18 @@ Installation, setup, and user guide
       * [Ansible Requirements][]
 
 [Ansible Requirements]: http://docs.ansible.com/ansible/intro_installation.html#control-machine-requirements
+
+### Ansible Setup ###
+  * Depending on the setup of the centralized server that will be launching Ansible, you will need to pick what is best for you from the [Ansible installation documentation][].
+  * We installed ansible from github for a rootless (no privileges) installation.
+      * If installed on a server infrastructure, if you do not have access to an administrator or administrator privileges, a github installation may be the best option for you.
+  * Ansible setup is rather straightforward and should not be very problematic.
+  * After you have installed Ansible on your server, make sure to generate ssh keys for the server.
+      * [GitHub Generating SSH-Key][]
+
+[Ansible installation documentation]: http://docs.ansible.com/ansible/intro_installation.html
+
+[GitHub Generating SSH-Key]: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 
 ### Raspberry Pi Setup ###
   * [Raspberry PI Quick Start Guide][]
@@ -72,6 +85,16 @@ Installation, setup, and user guide
           * type or copy/paste: `wireless-power off`
           * Exit and save the file with nano. (`Ctrl+X`)
           * This removes all wireless power management which prevents random disconnects.
+  * **OpenSSH Server**
+      * open a terminal and type or copy/paste: `sudo apt-get install openssh-server`
+      * Test the ssh server by logging in with: `ssh pi@localhost`
+      * To also test if your hostname works check: `ssh pi@<YourHostnameHere>`
+      * Finally, if hostname doesn't work, find your [Raspberry Pi IP address][] and try: `ssh pi@<YourIpAddressHere>`
+      * To make sure all rPIs have the Ansible server's ssh-key and are a known host, from the Ansible server:
+          * Open a terminal and type or copy/paste: `ssh-copy-id pi@<YourHostnameHere>` or `ssh-copy-id pi@<YourIpAddressHere>`
+          * *If you don't do this step you will have to copy it individually for every rPI you have later!*
+
+[Raspberry Pi IP address]: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address
 
 ##### Cloning your Raspberry Pi: #####
   * After setting up the first Raspberry Pi, you will want to clone the image and copy it onto all your other Raspberry PI SD Cards.
@@ -92,14 +115,15 @@ Installation, setup, and user guide
 [Clone Raspberry PI All Operating Systems]: http://www.htpcguides.com/easy-resize-and-back-up-raspberry-pi-sd-card-with-ubuntu/
 
 [Follow these instructions for enabling and installing the camera.]: https://www.raspberrypi.org/documentation/usage/camera/README.md
-
-### Ansible Setup ###
-  * Depending on the setup of the centralized server that will be launching Ansible, you will need to pick what is best for you from the [Ansible installation documentation][].
-  * We installed ansible from github for a rootless (no privileges) installation.
-      * If installed on a server infrastructure, if you do not have access to an administrator or administrator privileges, a github installation may be the best option for you.
-  * Ansible setup is rather straightforward and should not be very problematic.
   
 ### Using Ansible To Manage The Bramble ###
+  * You can now start to manage your Bramble with Ansible on the centralized server.
+  * Lets start by making a hosts file also known as the [Ansible Inventory][].
+      * A sample hosts file from our configuration is here: [hosts](hosts).
+          * All our rPIs are referred to by their IP address, but they don't need to be if your network identifies them by hostname.
+      * Use it as a guide, but almost everything in the hosts file must be different and specific to your setup.
+      * I find it useful to define a group with localhost (the server) for use in playbooks. In our hosts file, it is the `clizarraga_chronos` group.
+  * If you need to use proxy settings or specific ssh settings
   * So, you've setup your Raspberry PIs and you have installed Ansible, now you need to clone this github repository if you haven't already. This section assumes we are on the Ansible centralized server.
   * First, a GitHub primer to get you started: [GitHub Introduction: Hello World!][]
   * Then, once you are finished with that open a terminal:
@@ -107,7 +131,7 @@ Installation, setup, and user guide
       * If you want to clone it into a different folder name, type: `git clone git@github.com:calizarr/EPSCOR_Bramble_GH9C.git <YourFolderName>`
   * The files you'll need from this repository aren't many.
       * All of the playbooks (yml files) assume that the rPI image directory is `/home/pi/Images/`.
-      * [hosts](hosts) -- [Ansible Inventory][] and needs to be configured for your setup.
+      * [hosts](hosts) -- needs to be configured for your setup.
           * I find it useful to declare the localhost as its own group in the inventory file. In this case, it is `clizarraga_chronos` and some of the playbooks use it later. You can change it to your preference or keep using my name for it although I suggest changing it.
       * ansible.cfg -- should be completely configured for your own setup.
           * Use it as a guide, but don't copy directly. Generally just stick to ansible defaults unless you need to change them.
@@ -141,7 +165,6 @@ Installation, setup, and user guide
 
 [pi_config/interfaces]: pi_config/interfaces
 
-[Ansible installation documentation]: http://docs.ansible.com/ansible/intro_installation.html
 
 [GitHub Introduction: Hello World!]: https://guides.github.com/activities/hello-world/
 
