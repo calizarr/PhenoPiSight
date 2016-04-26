@@ -109,6 +109,9 @@ Installation, setup, and user guide
           `grid = convert_ip(get_ip(), width, height, offset)`  
           `filename = "{hostname}_Y{y}_X{x}_{now}.png".format(hostname=hostname, x=grid[1], y=grid[0], now=now.strftime("%Y-%m-%d-%H-%M"))`  
           * Line 145 looks like: `# filename = hostname+"_"+now.strftime("%Y-%m-%d-%H-%M")+".png"`
+      * After altering the script, copy the [python camera script][] to `/home/pi/`
+          * You can do it by copying the [python camera script][] to the `/home/pi/` folder in the Raspberry Pi.
+          * You could also clone the repository onto the Original Raspberry Pi, alter the script, and then move it to `/home/pi` by opening a terminal then type or copy/paste `mv camera_single.py /home/pi`
 
 [Raspberry Pi IP address]: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address
 
