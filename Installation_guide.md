@@ -184,7 +184,7 @@ Installation, setup, and user guide
 
 [ansible configuration file]: http://docs.ansible.com/ansible/intro_configuration.html
 
-[playbooks folder]: playbooks/README.md
+[playbooks folder readme]: playbooks/README.md
 
 [Default configuration file from Ansible.]: https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg
 
