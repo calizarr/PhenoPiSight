@@ -90,6 +90,7 @@ Installation, setup, and user guide
       * Test the ssh server by logging in with: `ssh pi@localhost`
       * To also test if your hostname works check: `ssh pi@<YourHostnameHere>`
       * Finally, if hostname doesn't work, find your [Raspberry Pi IP address][] and try: `ssh pi@<YourIpAddressHere>`
+          * If hostnames don't work, I highly suggest setting up static IP addresses for each rPI to make sure that you know which one you are accessing.
       * To make sure all rPIs have the Ansible server's ssh-key and are a known host, from the Ansible server:
           * Open a terminal and type or copy/paste: `ssh-copy-id pi@<YourHostnameHere>` or `ssh-copy-id pi@<YourIpAddressHere>`
           * *If you don't do this step you will have to copy it individually for every rPI you have later!*
