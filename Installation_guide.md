@@ -99,6 +99,10 @@ Installation, setup, and user guide
       * To make sure all rPIs have the Ansible server's ssh-key and are a known host, from the Ansible server:
           * Open a terminal and type or copy/paste: `ssh-copy-id pi@<YourHostnameHere>` or `ssh-copy-id pi@<YourIpAddressHere>`
           * *If you don't do this step you will have to copy it individually for every rPI you have later!*
+  * **Set the Timezone**
+      * Open a terminal and type or copy/paste: `sudo dpkg-reconfigure tzdata`
+      * Set your timezone.
+      * This will be the timezone of all the rPIs in the bramble.
   * **Playbooks Adjustments**
       * If you will be using the playbooks in this repository, then you need to add a few things on the original rPI.
       * Make a folder for the images:
@@ -167,23 +171,34 @@ Installation, setup, and user guide
   * The playbooks have a lot of assumptions built into them:
       * All images taken on the rPI use [camera_single.py][].
       * All images on the rPI are stored in `/home/pi/Images/`
-
+  * **Playbooks**
+      * For all playbooks, `gather_facts` doesn't need to be false if you don't have connectivity issues.
+      * The `when:` determines when a task will run if the variable after it is false, it will not run.
+      * `become:` determines if the task will be run as a superuser.
+      * [copy-pictures.yml][] -- Needs to change to be specific to the user setup.
+          * Variables `img_dir` and `local_dir` need to be changed.
+              * `img_dir` needs to be changed only if you're not using `/home/pi/Images` on the rPIs as your image destination.
+              * `local_dir` needs to be changed to where the image files will be stored on the centralized server.
+      * [sudo-plays.yml][] -- Contains true/false variables that need to be changed depending on context.
+          * The tasks containing `utmp`, `sshd`, or `DNS` are for connectivity issues.
+              * In general, its best to leave them false.
+          * You might need to change the `Add hourly cron job from 5 AM to 9 PM` task.
+              * To understand more about cron, read `man cron` and the [Ansible cron module][].
+          * Currently it takes images every hour between 5 AM and 9 (21) PM.
+              
 [playbooks folder]: playbooks/
 
 [camera_single.py]: pi_files/camera_single.py
 
 [ansible playbooks documentation]: http://docs.ansible.com/ansible/playbooks_intro.html
 
+[copy-pictures.yml]: playbooks/copy-pictures.yml
+
+[sudo-plays.yml]: playbooks/sudo-plays.yml
+
   
 ##### CURRENTLY BEING REWRITTEN #####
-        * copy-pictures.yml -- needs some changes to be useful to your setup.
-            * `img_dir` and `local_dir` need to be changed.
-                * `img_dir` needs to be changed only if you're not using `/home/pi/Images` on the rPIs as your image destination.
-                * `local_dir` needs to be changed to where the image files will be stored not on the rPIs.
-        * sudo-plays.yml -- contains true/false variables that need to be changed depending on context.
-            * You might need to change the `Add hourly cron job from 5 AM to 9 PM` task.
-                * To understand more about cron, read `man cron` and the [Ansible cron module][].
-            * Change the `src:` variable on the `Send camera_single.py to the rPIs` task to the destination of camera_single.py of this repository.
+  * Change the `src:` variable on the `Send camera_single.py to the rPIs` task to the destination of camera_single.py of this repository.
 
 [Raspberry Pi Installing Operating Systems]: https://www.raspberrypi.org/documentation/installation/installing-images/
 
