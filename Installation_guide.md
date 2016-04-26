@@ -2,7 +2,7 @@ Installation, setup, and user guide
 ===================================
 
 ### Getting Started ###
-  * Raspberry Pis will require some usage of the Linux terminal and its worth knowing how to get around a bit. The Raspberry Pi foundation provides a [quick tutorial][].
+  * Raspberry Pis will require some usage of the Linux terminal and it's worth knowing how to get around a bit. The Raspberry Pi foundation provides a [quick tutorial][].
   * As great as it is, it does not give you information on how to use `nano` the default Linux text editor:
       * [Beginnner's Guide to Nano][]
       * [Nano Basics][]
