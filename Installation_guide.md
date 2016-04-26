@@ -106,7 +106,7 @@ Installation, setup, and user guide
       * Open a terminal:
           * Type or copy/paste: `sudo nano /etc/network/interfaces` in a new line under `wlan0`
           * Type or copy/paste: `wireless-power off`
-          * Exit and save the file with nano. (`Ctrl+X`)
+          * Exit and save the file with nano. (`Ctrl+X\ -> Y -> Enter`)
           * This removes all wireless power management which prevents random disconnects.
   * **OpenSSH Server**
       * Open a terminal and type or copy/paste: `sudo apt-get install openssh-server`
