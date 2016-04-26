@@ -23,6 +23,8 @@ Installation, setup, and user guide
 
 [quick python tutorial]: https://www.raspberrypi.org/documentation/usage/python/README.md
 
+[GitHub Introduction: Hello World!]: https://guides.github.com/activities/hello-world/
+
 ### Requirements ###
   * *N* number of Raspberry Pis (rPIs)
   * Centralized Linux server/desktop to run Ansible.
@@ -65,6 +67,10 @@ Installation, setup, and user guide
 [windows_explorer_capacity]: screenshots/windows_explorer_capacity.png
 
 [windows_diskmgmt_capacity.png]: screenshots/windows_diskmgmt_capacity.png
+
+[Raspberry Pi Installing Operating Systems]: https://www.raspberrypi.org/documentation/installation/installing-images/
+
+[debian jessie]: https://www.raspberrypi.org/downloads/raspbian/
 
 ##### Setting up your Raspberry Pi: #####
   * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI capable monitor.
@@ -121,6 +127,20 @@ Installation, setup, and user guide
 [Raspberry Pi IP address]: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address
 
 [python camera script]: pi_files/camera_single.py
+
+[Raspberry PI CLI setup]: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
+
+[Raspberry PI Quick Start Guide]: https://www.raspberrypi.org/help/quick-start-guide/
+
+[GUI WiFi Setup]: https://www.raspberrypi.org/blog/another-raspbian-desktop-user-interface-update/
+
+[Change hostname using command line]: http://www.howtogeek.com/167195/how-to-change-your-raspberry-pi-or-other-linux-devices-hostname/
+
+[here]: http://sizious.com/2015/08/28/setting-a-static-ip-on-raspberry-pi-on-raspbian-20150505/
+
+[pi_config/dhcpcd.conf]: pi_config/dhcpcd.conf
+
+[pi_config/interfaces]: pi_config/interfaces
 
 ##### Cloning your Raspberry Pi: #####
   * After setting up the first Raspberry Pi, you will want to clone the image and copy it onto all your other Raspberry PI SD Cards.
@@ -206,27 +226,6 @@ Installation, setup, and user guide
 [copy-pictures.yml]: playbooks/copy-pictures.yml
 
 [sudo-plays.yml]: playbooks/sudo-plays.yml
-
-[Raspberry Pi Installing Operating Systems]: https://www.raspberrypi.org/documentation/installation/installing-images/
-
-[debian jessie]: https://www.raspberrypi.org/downloads/raspbian/
-
-[Raspberry PI CLI setup]: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
-
-[Raspberry PI Quick Start Guide]: https://www.raspberrypi.org/help/quick-start-guide/
-
-[GUI WiFi Setup]: https://www.raspberrypi.org/blog/another-raspbian-desktop-user-interface-update/
-
-[Change hostname using command line]: http://www.howtogeek.com/167195/how-to-change-your-raspberry-pi-or-other-linux-devices-hostname/
-
-[here]: http://sizious.com/2015/08/28/setting-a-static-ip-on-raspberry-pi-on-raspbian-20150505/
-
-[pi_config/dhcpcd.conf]: pi_config/dhcpcd.conf
-
-[pi_config/interfaces]: pi_config/interfaces
-
-
-[GitHub Introduction: Hello World!]: https://guides.github.com/activities/hello-world/
 
 [Ansible cron module]: http://docs.ansible.com/ansible/cron_module.html
 
