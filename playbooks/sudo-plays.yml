@@ -77,5 +77,5 @@
 
   tasks:
     - name: Add hourly cron job to take pictures from rPIs at every hour.
-      cron: name="copy pictures" hour="*" minute="5" jobs="cd /home/clizarraga/usr/local/ansible/cluster/rPI/playbooks/ && time bash -x playbook-ansible.sh -i ../hosts copy-pictures.yml -f 2 -vv"
+      cron: name="copy pictures" hour="*" minute="5" jobs="cd /home/clizarraga/Projects/EPSCOR_Bramble_GH9C/playbooks && time bash -x playbook-ansible.sh -i ../hosts copy-pictures.yml -f 2 -vv"
       when: local_cron

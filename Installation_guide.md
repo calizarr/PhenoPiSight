@@ -184,23 +184,28 @@ Installation, setup, and user guide
       * [sudo-plays.yml][] -- Contains true/false variables that need to be changed depending on context.
           * The tasks containing `utmp`, `sshd`, or `DNS` are for connectivity issues.
               * In general, its best to leave them false.
-          * You might need to change the `Add hourly cron job from 5 AM to 9 PM` task.
+          * Timezone task(s):
+              * Change the `timezone_change` variable and change the `timezone` variable itself to your desired timezone.
+              * Use one of the strings from the TZ column in this [list of TZ database timezones][]
+          * Task: `Add hourly cron job from 5 AM to 9 PM`
+              * Currently it takes images every hour between 5 AM and 9 (21) PM.
               * To understand more about cron, read `man cron` and the [Ansible cron module][].
-          * Currently it takes images every hour between 5 AM and 9 (21) PM.
+          * Task: `Send camera_single.py to the rPIs`
+              * Change `src:` to the destination of `camera_single.py` on your Ansible server.
+          * There is a secondary playbook in the file aimed at the localhost (`clizarraga_chronos`) to set up a cron job on it.
+              * Change the `hosts:` to your localhost designation in your hosts/inventory file.
+              * Change the `jobs="cd <YourPlaybooksDirectoryHere> && time bash -x playbook-ansible.sh -i <YourHostsFileHere> -vv`
+                  * The `-f 2` option forces Ansible to do only two at a time instead of its usual 5. You can also set it to more processes at once if you want.
               
 [playbooks folder]: playbooks/
 
-[camera_single.py]: pi_files/camera_single.py
-
 [ansible playbooks documentation]: http://docs.ansible.com/ansible/playbooks_intro.html
+
+[camera_single.py]: pi_files/camera_single.py
 
 [copy-pictures.yml]: playbooks/copy-pictures.yml
 
 [sudo-plays.yml]: playbooks/sudo-plays.yml
-
-  
-##### CURRENTLY BEING REWRITTEN #####
-  * Change the `src:` variable on the `Send camera_single.py to the rPIs` task to the destination of camera_single.py of this repository.
 
 [Raspberry Pi Installing Operating Systems]: https://www.raspberrypi.org/documentation/installation/installing-images/
 
@@ -224,3 +229,5 @@ Installation, setup, and user guide
 [GitHub Introduction: Hello World!]: https://guides.github.com/activities/hello-world/
 
 [Ansible cron module]: http://docs.ansible.com/ansible/cron_module.html
+
+[List of TZ data timezone variables]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
