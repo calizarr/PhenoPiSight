@@ -29,12 +29,21 @@ Installation, setup, and user guide
   * **Follow this documentation:** [Raspberry Pi Installing Operating Systems][]
   * [Debian jessie][] is the recommmended raspbian distribution.
   * ***To avoid problems in the future, make sure that your SD card used for cloning is the smallest SD card you have. Even if they claim to be of the same size -- 8 GBs is not the same across all SD cards.***
+      * In these examples, I am using an 8 GB sd card.
       * Linux Terminal: Open a terminal, type or copy/paste `df -h`, and look at the  `/dev/root` Filesystem and its `Size` parameter.
-      * Windows: Go into Windows Explorer, Right click the SD card and check the capacity.
       * ![size_screenshot][]
+      * Windows: Go into Windows Explorer, Right click the SD card drive, go to properties, and check the capacity.
+          * ![windows_explorer_capacity][]
+          * If it already has a Linux filesystem format, Windows won't be able to read it directly.
+          * Instead, press `Win+R` or open a command prompt, then type `diskmgmt.msc` and look for a Disk about the size of your SD card.
+          * ![windows_diskmgmt_capacity.png][]
   * Follow all the prompts after installing Raspbian/Debian Jessie onto the Original Raspberry Pi, then continue onward.
 
 [size_screenshot]: screenshots/sd_card_size.png
+
+[windows_explorer_capacity]: screenshots/windows_explorer_capacity.png
+
+[windows_diskmgmt_capacity.png]: screenshots/windows_diskmgmt_capacity.png
 
 ##### Setting up your Raspberry Pi: #####
   * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI capable monitor.
