@@ -165,6 +165,7 @@ Installation, setup, and user guide
           * Follow the instructions in the hostname section above.
           * Ignore the section with `sudo /etc/init.d/hostname.sh` since the sd card isn't booted up into the operating system at the moment and when it gets put into a rPI and is powered on is essentially the same.
       * Put the SD card into a rPI connected to a monitor, keyboard, and mouse and follow the hostname change section above.
+  * *The hostname change section has to be done for each and every SD card that will be placed in a different Raspberry Pi!*
 
 [this documentation.]: https://www.raspberrypi.org/documentation/linux/filesystem/backup.md
 
