@@ -191,7 +191,7 @@ Installation, setup, and user guide
               * Currently it takes images every hour between 5 AM and 9 (21) PM.
               * To understand more about cron, read `man cron` and the [Ansible cron module][].
           * Task: `Send camera_single.py to the rPIs`
-              * Change `src:` to the destination of `camera_single.py` on your Ansible server.
+              * Change `src:` to the absolute path of `camera_single.py` on your Ansible server.
           * There is a secondary playbook in the file aimed at the localhost (`clizarraga_chronos`) to set up a cron job on it.
               * Change the `hosts:` to your localhost designation in your hosts/inventory file.
               * Change the `jobs="cd <YourPlaybooksDirectoryHere> && time bash -x playbook-ansible.sh -i <YourHostsFileHere> -vv`
