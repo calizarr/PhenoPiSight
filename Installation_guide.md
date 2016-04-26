@@ -258,7 +258,7 @@ Installation, setup, and user guide
 
 [Ansible cron module]: http://docs.ansible.com/ansible/cron_module.html
 
-[List of TZ data timezone variables]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+[list of TZ database timezones]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 [wireless-power.yml]: playbooks/wireless-power.yml
 
