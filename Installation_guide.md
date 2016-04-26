@@ -124,7 +124,14 @@ Installation, setup, and user guide
           * All our rPIs are referred to by their IP address, but they don't need to be if your network identifies them by hostname.
       * Use it as a guide, but almost everything in the hosts file must be different and specific to your setup.
       * I find it useful to define a group with localhost (the server) for use in playbooks. In our hosts file, it is the `clizarraga_chronos` group.
-  * If you need to use proxy settings or specific ssh settings
+  * If you need to use proxy settings or specific ssh settings, then you need to edit the [ansible configuration file][].
+      * A sample configuration file is here: [config](playbooks/ansible.cfg)
+      * [Default configuration file from Ansible.][]
+      * Most of the changes are for ssh options because of connectivity and interference issues. Head to the [playbooks folder readme][] for more information.
+  
+  
+##### CURRENTLY BEING REWRITTEN #####
+
   * So, you've setup your Raspberry PIs and you have installed Ansible, now you need to clone this github repository if you haven't already. This section assumes we are on the Ansible centralized server.
   * First, a GitHub primer to get you started: [GitHub Introduction: Hello World!][]
   * Then, once you are finished with that open a terminal:
@@ -174,4 +181,10 @@ Installation, setup, and user guide
 [ansible playbooks documentation]: http://docs.ansible.com/ansible/playbooks_intro.html
 
 [Ansible cron module]: http://docs.ansible.com/ansible/cron_module.html
+
+[ansible configuration file]: http://docs.ansible.com/ansible/intro_configuration.html
+
+[playbooks folder]: playbooks/README.md
+
+[Default configuration file from Ansible.]: https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg
 
