@@ -4,10 +4,11 @@ Installation, setup, and user guide
 ### Raspberry Pi Setup ###
   * [Raspberry PI Quick Start Guide][]
   * To first configure the Raspberry Pi which will be used to make the image to clone onto all the other Raspberry PIs follow this documentation: [Raspberry Pi Installing Operating Systems][]
-  * I used [debian jessie][] and would recommend it.
+  * [Debian jessie][] is the recommmended raspbian distribution.
   * To avoid problems in the future, make sure that your SD card used for cloning is the smallest SD card you have. Even if they claim to be of the same size -- 8 GBs is not the same across all SD cards.
       * Linux Terminal: `df -h` check /dev/root and look for the Size parameter.
       * Windows: Go into Windows Explorer, Right click the SD card and check the capacity.
+  * Follow all the prompts after installing Raspbian/Debian Jessie onto the Original Raspberry Pi, then continue onward.
   * Setting up your Raspberry Pi:
       * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI capable monitor.
       * WiFi:
@@ -29,7 +30,7 @@ Installation, setup, and user guide
               * exit and save the file using Ctrl+X and agreeing to all prompts.
               * This removes all wireless power management which prevents random disconnects.
           * If you want to change it to a lower transmit power to avoid WiFi interferences, use the `interfaces` file in [pi_config/interfaces][].
-          * Generally unnecessary, but if you experience communication issues having a lower transmit power may be useful.
+          * This is generally unnecessary, but if you experience communication issues having a lower transmit power may be useful.
           * The ansible playbook `wireless-power.yml` will copy the file over if you need to change it after all the rPIs are set up.
               * Look at [playbooks folder](playbooks) for more information.
   * Cloning your Raspberry Pi:
@@ -38,6 +39,11 @@ Installation, setup, and user guide
           * [Cloning Your Raspberry PI (Windows)][]
           * [Clone Raspberry PI All Operating Systems][]
           * In general, backup the image then use that image to restore it onto all the other SD cards. You can use Win32DiskImager on Windows or the `dd` tool in Linux.
+      * After restoring/cloning each image onto an SD card, make sure to change its hostname to be unique. You can do this two ways on either a Linux or Apple machine:
+          * Navigate to the folder where the SD card is mounted, `/media` for Linux and `/Volumes` for Apple.
+              * Follow the instructions in the hostname section above.
+              * Ignore the section with `sudo /etc/init.d/hostname.sh` since the sd card isn't booted up into the operating system at the moment and when it gets put into a rPI and is powered on is essentially the same.
+          * Put the SD card into a rPI connected to a monitor, keyboard, and mouse and follow the hostname change section above.
 
 [this documentation.]: https://www.raspberrypi.org/documentation/linux/filesystem/backup.md
 
