@@ -31,6 +31,7 @@ Installation, setup, and user guide
   * ***To avoid problems in the future, make sure that your SD card used for cloning is the smallest SD card you have. Even if they claim to be of the same size -- 8 GBs is not the same across all SD cards.***
       * Linux Terminal: Open a terminal, type or copy/paste `df -h`, and look at the  `/dev/root` Filesystem and its `Size` parameter.
       * Windows: Go into Windows Explorer, Right click the SD card and check the capacity.
+      * 
   * Follow all the prompts after installing Raspbian/Debian Jessie onto the Original Raspberry Pi, then continue onward.
 
 ##### Setting up your Raspberry Pi: #####
