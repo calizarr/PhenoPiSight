@@ -17,6 +17,11 @@ Installation, setup, and user guide
 
 [quick python tutorial]: https://www.raspberrypi.org/documentation/usage/python/README.md
 
+### Requirements ###
+  * *N* number of Raspberry Pis (rPIs)
+  * Centralized Linux server/desktop to run Ansible.
+      * Networked and able to connect to the rPIs.
+      * Must be on 24/7
 
 ### Raspberry Pi Setup ###
   * [Raspberry PI Quick Start Guide][]
@@ -63,7 +68,7 @@ Installation, setup, and user guide
       * Navigate to the folder where the SD card is mounted, `/media` for Linux and `/Volumes` for Apple.
           * Follow the instructions in the hostname section above.
           * Ignore the section with `sudo /etc/init.d/hostname.sh` since the sd card isn't booted up into the operating system at the moment and when it gets put into a rPI and is powered on is essentially the same.
-          * Put the SD card into a rPI connected to a monitor, keyboard, and mouse and follow the hostname change section above.
+      * Put the SD card into a rPI connected to a monitor, keyboard, and mouse and follow the hostname change section above.
 
 [this documentation.]: https://www.raspberrypi.org/documentation/linux/filesystem/backup.md
 
