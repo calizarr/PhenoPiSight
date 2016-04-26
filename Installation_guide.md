@@ -210,7 +210,7 @@ Installation, setup, and user guide
               * Change the `timezone_change` variable and change the `timezone` variable itself to your desired timezone.
               * Use one of the strings from the TZ column in this [list of TZ database timezones][]
           * Task: `Add hourly cron job from 5 AM to 9 PM`
-              * Currently it takes images every hour between 5 AM and 9 (21) PM.
+              * Currently it takes images every hour between 5 AM (5) and 9 PM (21).
               * To understand more about cron, read `man cron` and the [Ansible cron module][].
           * Task: `Send camera_single.py to the rPIs`
               * Change `src:` to the absolute path of `camera_single.py` on your Ansible server.
