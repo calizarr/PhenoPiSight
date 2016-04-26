@@ -86,8 +86,8 @@ Installation, setup, and user guide
               * Your `domain_name_servers`, `ip_address`, `routers`, and `hostname` will be different
   * **Wireless Power Management:**
       * Open a terminal:
-          * type or copy/paste: `sudo nano /etc/network/interfaces` in a new line under `wlan0`
-          * type or copy/paste: `wireless-power off`
+          * Type or copy/paste: `sudo nano /etc/network/interfaces` in a new line under `wlan0`
+          * Type or copy/paste: `wireless-power off`
           * Exit and save the file with nano. (`Ctrl+X`)
           * This removes all wireless power management which prevents random disconnects.
   * **OpenSSH Server**
@@ -103,6 +103,7 @@ Installation, setup, and user guide
       * Open a terminal and type or copy/paste: `sudo dpkg-reconfigure tzdata`
       * Set your timezone.
       * This will be the timezone of all the rPIs in the bramble.
+      * *If you don't do this step you will have to copy it individually for every rPI you have later or use UTC time!*
   * **Playbooks Adjustments**
       * If you will be using the playbooks in this repository, then you need to add a few things on the original rPI.
       * Make a folder for the images:
