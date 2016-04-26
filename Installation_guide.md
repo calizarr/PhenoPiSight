@@ -72,7 +72,8 @@ Installation, setup, and user guide
 
 [debian jessie]: https://www.raspberrypi.org/downloads/raspbian/
 
-##### Setting up your Raspberry Pi: #####
+#### Setting up your Raspberry Pi: ####
+
   * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI capable monitor.
   * **WiFi:**
       * Set up the network following instructions using the Graphical User Interface (GUI): [GUI WiFi Setup][]
@@ -253,3 +254,9 @@ Installation, setup, and user guide
 [take-pictures.yml]: playbooks/take-pictures.yml
 
 [playbook-ansible.sh]: playbooks/playbook-ansible.sh
+
+### Final Notes ###
+  * You can manage the bramble via Ansible with more playbooks that you can create yourself using the documentation provided above.
+  * A good way to test some Ansible commands beforehand is to use Ansible modules with [ad-hoc commands][]
+
+[ad-hoc commands]: http://docs.ansible.com/ansible/intro_adhoc.html
