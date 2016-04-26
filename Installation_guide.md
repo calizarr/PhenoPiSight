@@ -27,12 +27,18 @@ Installation, setup, and user guide
 
 ### Requirements ###
   * *N* number of Raspberry Pis (rPIs)
+      * Each rPI should have a camera module and a WiFi dongle.
+      * We use the [WiPi Dongle][].
+          * Allows transmit power changes without reboot.
+          * More powerful than Adafruit dongles.
   * Centralized Linux server/desktop to run Ansible.
       * Networked and able to connect to the rPIs.
       * Must be on 24/7
       * [Ansible Requirements][]
 
 [Ansible Requirements]: http://docs.ansible.com/ansible/intro_installation.html#control-machine-requirements
+
+[WiPi Dongle]: https://www.element14.com/community/docs/DOC-69361/l/wifi-usb-dongle-for-raspberry-pi
 
 ### Ansible Setup ###
   * Depending on the setup of the centralized server that will be launching Ansible, you will need to pick what is best for you from the [Ansible installation documentation][].
@@ -41,10 +47,14 @@ Installation, setup, and user guide
   * Ansible setup is rather straightforward and should not be very problematic.
   * After you have installed Ansible on your server, make sure to generate ssh keys for the server.
       * [GitHub Generating SSH-Key][]
+      * [Digital Ocean SSH Key Tutorial][]
+          * Don't disable password for root login.
 
 [Ansible installation documentation]: http://docs.ansible.com/ansible/intro_installation.html
 
 [GitHub Generating SSH-Key]: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+
+[Digital Ocean SSH Key Tutorial]: https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
 
 ### Raspberry Pi Setup ###
   * [Raspberry PI Quick Start Guide][]
@@ -61,7 +71,7 @@ Installation, setup, and user guide
           * Instead, press `Win+R` or open a command prompt, then type `diskmgmt.msc` and look for a Disk about the size of your SD card.
           * ![windows_diskmgmt_capacity.png][]
   * Follow all the prompts after installing Raspbian/Debian Jessie onto the Original Raspberry Pi, then continue onward.
-
+5A
 [size_screenshot]: screenshots/sd_card_size.png
 
 [windows_explorer_capacity]: screenshots/windows_explorer_capacity.png
