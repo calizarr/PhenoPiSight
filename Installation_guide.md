@@ -51,7 +51,7 @@ Installation, setup, and user guide
           * Also take a look at the file in [pi_config/dhcpcd.conf][] for an idea of what to put in your dhcpcd.conf
               * Most of it is default boilerplate, the important section for static IP addresses starts at line 43.
               * Your `domain_name_servers`, `ip_address`, `routers`, and `hostname` will be different
-  * **Wireless Transmit Power:**
+  * **Wireless Power Management:**
       * Open a terminal:
           * type or copy/paste: `sudo nano /etc/network/interfaces` in a new line under `wlan0`
           * type or copy/paste: `wireless-power off`
