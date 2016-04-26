@@ -30,12 +30,12 @@ Installation, setup, and user guide
 
 ##### Setting up your Raspberry Pi: #####
   * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI capable monitor.
-  * WiFi:
+  * **WiFi:**
       * Set up the network following instructions for GUI: [GUI WiFi Setup][]
       * If using the command line follow this set of instructions: [Raspberry PI CLI setup][]
-  * Camera:
+  * **Camera:**
       * [Follow these instructions for enabling and installing the camera.][]
-  * Hostname:
+  * **Hostname:**
       * [Change hostname using command line][]
       * Make sure to give your Raspberry PI a unique hostname.
           * Ours go from ShakoorCamera11 to ShakoorCamera190 so that they do not conflict.
@@ -45,7 +45,7 @@ Installation, setup, and user guide
               * The previous GUI WiFi Setup also includes some information on static IP addresses.
           * Also take a look at the file in [pi_config/dhcpcd.conf][] for an idea of what to put in your dhcpcd.conf
               * Your `domain_name_servers`, `ip_address`, `routers`, and `hostname` will be different
-  * Wireless Transmit Power:
+  * **Wireless Transmit Power:**
       * Go to a terminal and type:
           * `sudo nano /etc/network/interfaces` under wlan0 type: `wireless-power off`
           * exit and save the file using Ctrl+X and agreeing to all prompts.
