@@ -218,7 +218,7 @@ Installation, setup, and user guide
               * Change the `jobs="cd <YourPlaybooksDirectoryHere> && time bash -x playbook-ansible.sh -i <YourHostsFileHere> -vv`
                   * The `-f 2` option forces Ansible to do only two at a time instead of its usual 5. You can also set it to more processes at once if you want.
       * [wireless-power.yml][] -- Sends the [interfaces][] file to the rPIs.
-          * Change the `src:` to the absolute path of the `interfaces` file.
+          * Change the `src:` to the absolute path of the `interfaces` file on your Ansible server.
       * [take-pictures.yml][] -- Sends command to the hosts to call `camera_single.py`.
               
 [playbooks folder]: playbooks/
