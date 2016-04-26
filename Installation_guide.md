@@ -99,8 +99,19 @@ Installation, setup, and user guide
       * To make sure all rPIs have the Ansible server's ssh-key and are a known host, from the Ansible server:
           * Open a terminal and type or copy/paste: `ssh-copy-id pi@<YourHostnameHere>` or `ssh-copy-id pi@<YourIpAddressHere>`
           * *If you don't do this step you will have to copy it individually for every rPI you have later!*
+  * **Playbooks Adjustments**
+      * If you will be using the playbooks in this repository, then you need to add a few things on the original rPI.
+      * Make a folder for the images:
+          * Open a terminal and type or copy/paste: `mkdir /home/pi/Images`
+      * Alter the [python camera script][] to suit your needs.
+          * Comment out lines 143-144 and uncomment line 145
+          * Line 143-145 look like: ```        grid = convert_ip(get_ip(), width, height, offset)
+                  filename = "{hostname}_Y{y}_X{x}_{now}.png".format(hostname=hostname, x=grid[1], y=grid[0], now=now.strftime("%Y-%m-%d-%H-%M"))```
+          * Line 145 looks like: `# filename = hostname+"_"+now.strftime("%Y-%m-%d-%H-%M")+".png"`
 
 [Raspberry Pi IP address]: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address
+
+[python camera script]: pi_files/camera_single.py
 
 ##### Cloning your Raspberry Pi: #####
   * After setting up the first Raspberry Pi, you will want to clone the image and copy it onto all your other Raspberry PI SD Cards.
@@ -145,12 +156,19 @@ Installation, setup, and user guide
 
 [Default configuration file from Ansible.]: https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg
 
-#### Ansible Playbooks Files ####
+#### Ansible Playbooks ####
+  * So, you've setup your Raspberry PIs and you have installed and set up Ansible with your own hosts and configuration file.
+  * This repository contains a [playbooks folder][] with playbooks made to manage the Raspberry Pis via the centralized server.
+  * The playbooks have a lot of assumptions built into them:
+      * All images taken on the rPI use [camera_single.py][].
+      * All images on the rPI are stored in `/home/pi/Images/`
+
+[playbooks folder]: playbooks/
+
+[camera_single.py]: pi_files/camera_single.py
   
 ##### CURRENTLY BEING REWRITTEN #####
 
-  * So, you've setup your Raspberry PIs and you have installed Ansible, now you need to clone this github repository if you haven't already. This section assumes we are on the Ansible centralized server.
-  * Then, once you are finished with that open a terminal:
   * The files you'll need from this repository aren't many.
       * All of the playbooks (yml files) assume that the rPI image directory is `/home/pi/Images/`.
       * ansible.cfg -- should be completely configured for your own setup.
