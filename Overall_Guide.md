@@ -14,6 +14,8 @@ Installation, setup, and user guide
       * WiFi:
           * Set up the network following instructions for GUI: [GUI WiFi Setup][]
           * If using the command line follow this set of instructions: [Raspberry PI CLI setup][]
+      * Camera:
+          * [Follow these instructions for enabling and installing the camera.][]
       * Hostname:
           * [Change hostname using command line][]
           * Make sure to give your Raspberry PI a unique hostname.
@@ -50,6 +52,8 @@ Installation, setup, and user guide
 [Cloning Your Raspberry PI (Windows)]: http://lifehacker.com/how-to-clone-your-raspberry-pi-sd-card-for-super-easy-r-1261113524
 
 [Clone Raspberry PI All Operating Systems]: http://www.htpcguides.com/easy-resize-and-back-up-raspberry-pi-sd-card-with-ubuntu/
+
+[Follow these instructions for enabling and installing the camera.]: https://www.raspberrypi.org/documentation/usage/camera/README.md
 
 ### Ansible Setup ###
   * Depending on the setup of the centralized server that will be launching Ansible, you will need to pick what is best for you from the [Ansible installation documentation][].
