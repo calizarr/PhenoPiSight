@@ -160,7 +160,7 @@ Installation, setup, and user guide
           * [Cloning Your Raspberry PI (Windows)][]
           * [Clone Raspberry PI All Operating Systems][]
       * In general, backup the image then use that image to restore it onto all the other SD cards. You can use Win32DiskImager on Windows or the `dd` tool in Linux.
-  * After restoring/cloning each image onto an SD card, make sure to change its hostname to be unique. You can do this two ways with either a Linux or Apple machine or a Raspberry Pi connected to monitor and keyboard:
+  * After restoring/cloning the image onto each SD card, make sure to change its hostname to be unique. You can do this two ways with either a Linux or Apple machine or a Raspberry Pi connected to monitor and keyboard:
       * Navigate to the folder where the SD card is mounted, `/media` for Linux and `/Volumes` for Apple.
           * Follow the instructions in the hostname section above.
           * Ignore the section with `sudo /etc/init.d/hostname.sh` since the sd card isn't booted up into the operating system at the moment and when it gets put into a rPI and is powered on is essentially the same.
