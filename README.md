@@ -4,7 +4,7 @@ EPSCOR_Bramble_GH9C
 ## A cluster of Raspberry PIs is generally referred to as a bramble. ##
 
 ## Information about the project ##
-  * Raspberry PI:
+  * **Raspberry PI:**
       * 180 Raspberry PIs (rPIs) on a gantry above the greenhouse.
       * Powered by rPI adapters plugged into power strips.
           * Make sure there is no electromagnetic interference by assuring no loops in the power cables.
@@ -15,7 +15,7 @@ EPSCOR_Bramble_GH9C
       
 ![Screenshot of Ganglia][]
 
-  * Ganglia is entirely optional.
+  * **Ganglia is entirely optional.**
   * Two Wireless Access Points (WAP) specifically dedicated to the bramble and two others simulcasting for a total of 4 SSIDs to subdivide the bramble. Approximately 45 rPIs per WAP.
   * Because of current location there is a lot of wireless interference so the rPIs have their transmit power turned down to 18 db at all times. It is increased back up to 20 db before copying files over.
   * The interference at the moment doesn't allow for more than about 165 rPIs to be able to be functioning at the same time for most wireless transfers. The cron jobs on the bramble will manage taking pictures, however, the centralized server must be in charge of copying pictures to storage so as to be able to manage the bramble.
@@ -26,7 +26,7 @@ EPSCOR_Bramble_GH9C
 [Installation guide]: Installation_guide.md
 
 ## Initial Setup ##
-  * Raspberry PI Setup:
+  * **Raspberry PI Setup:**
       * Load the latest version of debian onto the rPIs.
       * Configure each rPI with their own hostname, WiFi access, IP address (if static), etc.
           * This repo has bash files in [pi_config](pi_config) that I used for fast configuration of the Raspberry PI. They are very specific to our configuration, but if you want to use them as an idea of how to more quickly configure rPIs please take a look.
@@ -34,7 +34,7 @@ EPSCOR_Bramble_GH9C
           * Use at your own risk.
       * At minimum before Ansible can work with the rPIs, they need an openssh-server (`sudo apt-get install openssh-server`); a unique hostname, IP address, or both; ssh keys from the centralized server copied onto them; and a user.
       * The preferred method is to configure one rPI with all of the settings which are the same across the entire bramble and then clone that image using any of the [available methods][].
-  * Centralized server setup:
+  * **Centralized server setup:**
       * Generate ssh-key for user that will interact with the bramble.
           * `ssh-copy-id` will be the preferred command to copy keys.
           * If automating, install and use `sshpass` to use the default rPI password without having to input it 180 times.
