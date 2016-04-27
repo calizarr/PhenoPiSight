@@ -19,9 +19,9 @@ EPSCOR_Bramble_GH9C
   * The interference at the moment doesn't allow for more than about 165 rPIs to be able to be functioning at the same time for most wireless transfers. The cron jobs on the bramble will manage taking pictures, however, the centralized server must be in charge of copying pictures to storage so as to be able to manage the bramble.
   * The bramble is managed from a centralized server on the infrastructure using [Ansible][], a [configuration/deployment IT management engine][] written in Python.
   * The grid for the Raspberry Pis/Bramble looks like this in both:
-      * Octet:  
+      * **Octet Format:**  
       * ![rpi_grid_octet][]
-      * Coord:  
+      * **Coord Format:**  
       * ![rpi_grid_coord][]
   * The perspective of the images is from the door entering the greenhouse on the bottom left near 10.9.0.16
   * The Octet version is the IP address of every rPI starting with 10.9.0.11 from the bottom right to 10.9.0.190 on the top left.
