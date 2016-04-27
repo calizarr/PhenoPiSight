@@ -26,8 +26,8 @@ EPSCOR_Bramble_GH9C
       * The grid for the Raspberry Pis/Bramble looks like this in both:
           * **Octet Format:**
 <img src="https://github.com/calizarr/EPSCOR_Bramble_GH9C/blob/master/screenshots/rpi_grid_octet.png" align="left" width="397" height="563">
-          * **Coord Format:**
 <img src="https://github.com/calizarr/EPSCOR_Bramble_GH9C/blob/master/screenshots/rpi_grid_coord.png" align="right" width="397" height="563">
+          * **Coord Format:**
       * The perspective of the images is from the door entering the greenhouse on the bottom left near 10.9.0.16 (30,1)
       * The Octet version is the IP address of every rPI starting with 10.9.0.11 from the bottom right to 10.9.0.190 on the top left.
       * The Coord version is the translated matrix coordinates of the last octet of the IP address (11 for 10.9.0.11) reversed in order (from 11 top left to 190 bottom right).
