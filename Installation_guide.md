@@ -33,7 +33,7 @@ Installation, setup, and user guide
           * More powerful than Adafruit dongles.
       * Each rPI should have its own case.
   * Centralized Linux server/desktop to run Ansible.
-      * Networked and able to connect to the rPIs.
+      * Networked and able to connect to t0he rPIs.
       * Must be on 24/7
       * [Ansible Requirements][]
 

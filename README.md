@@ -11,15 +11,22 @@ EPSCOR_Bramble_GH9C
       * One Raspberry PI (omegabackup) kept outside with monitor and keyboard for quick maintenance.
       * One Raspberry PI (alphabackup) kept for testing new scripts to be sent to rPIs.
       * One Raspberry PI (serverpi) kept to be the server for [Ganglia][] -- It collects data from the bramble and transmists it to a ganglia host which allows a broad overview of rPI load, uptime, etc. over a given time interval.
-      * Ganglia screenshot:
-      
-![Screenshot of Ganglia][]
-
+      * Ganglia screenshot:  
+      * ![Screenshot of Ganglia][]  
   * **Ganglia is entirely optional.**
   * Two Wireless Access Points (WAP) specifically dedicated to the bramble and two others simulcasting for a total of 4 SSIDs to subdivide the bramble. Approximately 45 rPIs per WAP.
   * Because of current location there is a lot of wireless interference so the rPIs have their transmit power turned down to 18 db at all times. It is increased back up to 20 db before copying files over.
   * The interference at the moment doesn't allow for more than about 165 rPIs to be able to be functioning at the same time for most wireless transfers. The cron jobs on the bramble will manage taking pictures, however, the centralized server must be in charge of copying pictures to storage so as to be able to manage the bramble.
   * The bramble is managed from a centralized server on the infrastructure using [Ansible][], a [configuration/deployment IT management engine][] written in Python.
+  * The grid for the Raspberry Pis/Bramble looks like this in both:
+      * Octet:  
+      * ![rPI_grid_octet][]
+      * Coord:
+      * ![rpi_grid_coord][]
+
+[rPI_grid_octet]: screenshots/rPI_grid_octet.png
+
+[rpi_grid_coord]: screenshots/rpi_grid_coord.png
 
 ## For more in-depth installation instructions visit the [Installation guide][] ##
 
