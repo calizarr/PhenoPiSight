@@ -42,6 +42,7 @@ EPSCOR_Bramble_GH9C
               * y = i / width ;; integer division
               * i =  x + width * y
           * More information can be found [here][]
+      * The colors represent the division of rPIs per Wireless Access Point
 
 [here]: http://programmers.stackexchange.com/questions/212808/treating-a-1d-data-structure-as-2d-grid
 
