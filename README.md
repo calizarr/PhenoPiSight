@@ -25,7 +25,6 @@ EPSCOR_Bramble_GH9C
   * **Raspberry PI Physical Location**
       * The grid for the Raspberry Pis/Bramble looks like this in both:
           * **Octet Format** and **Coord Format**  
-          * TESTING
           <img src="https://github.com/calizarr/EPSCOR_Bramble_GH9C/blob/master/screenshots/rpi_grid_octet.png" align="left" width="370" height="526">
           <img src="https://github.com/calizarr/EPSCOR_Bramble_GH9C/blob/master/screenshots/rpi_grid_coord.png" align="right" width="370" height="526">  
           * TESTING
