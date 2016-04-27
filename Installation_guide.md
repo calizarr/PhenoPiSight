@@ -217,6 +217,12 @@ Installation, setup, and user guide
           * Variables `img_dir` and `local_dir` need to be changed.
               * `img_dir` needs to be changed only if you're not using `/home/pi/Images` on the rPIs as your image destination.
               * `local_dir` needs to be changed to where the image files will be stored on the centralized server.
+              * Task: `Pull with rsh/ssh and rsync from chronos`
+                  * Pulls images from the rPIs and removes them once transferred to the Ansible server location.
+                  * Options:
+                      * `remove-source-files` removes the files from the rPI once transfer is successful
+                      * `timeout` times out the operation after N seconds.
+                  * More information on rsync options is available via `man rsync`
       * [sudo-plays.yml][] -- Contains true/false variables that need to be changed depending on context.
           * The tasks containing `utmp`, `sshd`, or `DNS` are for connectivity issues.
               * In general, its best to leave them false.
