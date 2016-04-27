@@ -38,9 +38,9 @@ EPSCOR_Bramble_GH9C
           * `[y,x]`
           * The formulas are:
               * i is the sequential representation, x is the x coordinate in grid form, y is the y coordinate in grid form, width is the width of the matrix aka the length of the x-axis.
-              * x = i % width
-              * y = i / width ;; integer division
-              * i =  x + width * y
+              * `x = i % width`
+              * `y = i / width ;; integer division`
+              * `i =  x + width * y`
           * More information can be found [here][]
       * The colors represent the division of rPIs per Wireless Access Point
 
