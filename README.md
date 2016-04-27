@@ -25,7 +25,7 @@ EPSCOR_Bramble_GH9C
   * **Raspberry PI Physical Location**
       * The grid for the Raspberry Pis/Bramble looks like this in both:
           * **Octet Format:**  
-          * ![rpi_grid_octet][]
+          * ![rpi_grid_octet](screenshots/rpi_grid_octet.png =100x20)
           * **Coord Format:**  
           * ![rpi_grid_coord][]
       * The perspective of the images is from the door entering the greenhouse on the bottom left near 10.9.0.16 (30,1)
