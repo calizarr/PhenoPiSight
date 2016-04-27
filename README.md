@@ -31,6 +31,7 @@ EPSCOR_Bramble_GH9C
       * 2D representation:
       * `[0,0 0,1]`
       * `[1,0 1,1]`
+      * `[y,x]`
       * The formulas are:
           * i is the sequential representation, x is the x coordinate in grid form, y is the y coordinate in grid form, width is the width of the matrix aka the length of the x-axis.
           * x = i % width
