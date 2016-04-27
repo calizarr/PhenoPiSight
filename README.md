@@ -20,11 +20,11 @@ EPSCOR_Bramble_GH9C
   * The bramble is managed from a centralized server on the infrastructure using [Ansible][], a [configuration/deployment IT management engine][] written in Python.
   * The grid for the Raspberry Pis/Bramble looks like this in both:
       * Octet:  
-      * ![rPI_grid_octet][]
+      * ![rpi_grid_octet][]
       * Coord:
       * ![rpi_grid_coord][]
 
-[rPI_grid_octet]: screenshots/rPI_grid_octet.png
+[rpi_grid_octet]: screenshots/rpi_grid_octet.png
 
 [rpi_grid_coord]: screenshots/rpi_grid_coord.png
 
