@@ -27,7 +27,7 @@ EPSCOR_Bramble_GH9C
   * The Octet version is the IP address of every rPI starting with 10.9.0.11 from the bottom right to 10.9.0.190 on the top left.
   * The Coord version is the translated matrix coordinates of the last octet of the IP address (11 for 10.9.0.11) reversed in order.
   * The last octet is treated as a 1 dimensional data structure representing a 2 dimensional grid.
-      * 1D representation: [0, 1, 2, 3]
+      * 1D representation: `[0, 1, 2, 3]`
       * 2D representation:
       * `[0,0 0,1]`
       * `[1,0 1,1]`
