@@ -31,6 +31,7 @@ Installation, setup, and user guide
       * We use the [WiPi Dongle][].
           * Allows transmit power changes without reboot.
           * More powerful than Adafruit dongles.
+      * Each rPI should have its own case.
   * Centralized Linux server/desktop to run Ansible.
       * Networked and able to connect to the rPIs.
       * Must be on 24/7
