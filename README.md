@@ -29,8 +29,8 @@ EPSCOR_Bramble_GH9C
   * The last octet is treated as a 1 dimensional data structure representing a 2 dimensional grid.
       * 1D representation: [0, 1, 2, 3]
       * 2D representation:
-      * ___________________[0,0 0,1
-      * ____________________1,0 1,1]
+      * `[0,0 0,1`
+      * ` 1,0 1,1]`
       * The formulas are:
           * i is the sequential representation, x is the x coordinate in grid form, y is the y coordinate in grid form, width is the width of the matrix aka the length of the x-axis.
           * x = i % width
