@@ -21,6 +21,10 @@ EPSCOR_Bramble_GH9C
   * The interference at the moment doesn't allow for more than about 165 rPIs to be able to be functioning at the same time for most wireless transfers. The cron jobs on the bramble will manage taking pictures, however, the centralized server must be in charge of copying pictures to storage so as to be able to manage the bramble.
   * The bramble is managed from a centralized server on the infrastructure using [Ansible][], a [configuration/deployment IT management engine][] written in Python.
 
+## For a more in-depth installation guide visit the [Installation guide][] ##
+
+[Installation guide]: Installation_guide.md
+
 ## Initial Setup ##
   * Raspberry PI Setup:
       * Load the latest version of debian onto the rPIs.

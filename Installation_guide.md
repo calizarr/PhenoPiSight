@@ -272,5 +272,13 @@ Installation, setup, and user guide
   * You can manage the bramble via Ansible with more playbooks that you can create yourself using the documentation provided above. You can also use the playbooks as a template for future playbooks.
   * A good way to test some Ansible commands beforehand is to use Ansible modules with [ad-hoc commands][]
       * `ansible -m ping all` or `ansible -m command -a ls` are good examples.
+  * If you need to transfer files from an rPI to the Ansible server or vice versa you can use:
+      * Ansible modules [copy][] or [fetch][]
+      * `rsync` with a command like `rsync <from_user>@<from_host>:</path/to/file> <to_user>@<to_host>:</path/to/destination/>`
+          * Rsync documentation is available via `man rsync`
 
 [ad-hoc commands]: http://docs.ansible.com/ansible/intro_adhoc.html
+
+[copy]: http://docs.ansible.com/ansible/copy_module.html
+
+[fetch]: http://docs.ansible.com/ansible/fetch_module.html
