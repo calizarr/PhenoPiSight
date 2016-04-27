@@ -44,7 +44,7 @@ EPSCOR_Bramble_GH9C
               * i =  x + width * y
           * More information can be found [here][]
 
-[rpi_grid_octet]: screenshots/rpi_grid_octet.png
+[rpi_grid_octet]: screenshots/rpi_grid_octet.png =100x20
 
 [rpi_grid_coord]: screenshots/rpi_grid_coord.png
 
