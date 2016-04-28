@@ -52,6 +52,19 @@ EPSCOR_Bramble_GH9C
 
 ## Initial Setup ##
 
+### Requirements ###
+  * *N* number of Raspberry Pis (rPIs)
+      * Each rPI should have a camera module and a WiFi dongle.
+      * We use the [WiPi Dongle][].
+          * Allows transmit power changes without reboot.
+          * More powerful than Adafruit dongles.
+      * Each rPI should have its own case.
+  * Centralized Linux server/desktop to run Ansible.
+      * Networked and able to connect to t0he rPIs.
+      * Must be on 24/7
+      * Must have enough storage space to store images.
+      * [Ansible Requirements][]
+
 ### Centralized server setup / Ansible setup: ###
   * Generate ssh-key for user that will interact with the bramble.
       * `ssh-copy-id` is the best command to copy keys. It is usually installed with openssh.

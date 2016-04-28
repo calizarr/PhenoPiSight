@@ -35,6 +35,7 @@ Installation, setup, and user guide
   * Centralized Linux server/desktop to run Ansible.
       * Networked and able to connect to t0he rPIs.
       * Must be on 24/7
+      * Must have enough storage space to store images.
       * [Ansible Requirements][]
 
 [Ansible Requirements]: http://docs.ansible.com/ansible/intro_installation.html#control-machine-requirements
