@@ -51,24 +51,45 @@ EPSCOR_Bramble_GH9C
 [Installation, setup, and user guide]: Installation_guide.md
 
 ## Initial Setup ##
-  * **Centralized server setup / Ansible setup:**
-      * Generate ssh-key for user that will interact with the bramble.
-          * `ssh-copy-id` will be the preferred command to copy keys.
-          * If automating, install and use `sshpass` to use the default rPI password without having to input it 180 times.
-      * Install Ansible using their documentation.
-          * If you want to use more advanced rsync options (i.e. rsh, controlmaster on rsync) then change the synchronize.py file with the one in the repo after changing the options in it.
-          *  Use at your own risk.
-      * Use the [playbooks (.yml files) here](playbooks) after setting up your ansible!
-      * The hosts file will need to be changed entirely to match your setup.
-  * **Raspberry PI Setup:**
-      * Load the latest version of debian onto the rPIs.
-      * Configure each rPI with their own hostname, WiFi access, IP address (if static), etc.
-          * This repo has bash files in [pi_config](pi_config) that I used for fast configuration of the Raspberry PI. They are very specific to our configuration, but if you want to use them as an idea of how to more quickly configure rPIs please take a look. **Use these scripts at your own risk**
-              * The debian version used is Raspbian GNU/Linux 8 (jessie) for these scripts.
-       * At minimum before Ansible can work with the rPIs, they need an openssh-server (`sudo apt-get install openssh-server`); a unique hostname, IP address, or both; ssh keys from the centralized server copied onto them; and a user.
+
+### Centralized server setup / Ansible setup: ###
+  * Generate ssh-key for user that will interact with the bramble.
+      * `ssh-copy-id` is the best command to copy keys. It is usually installed with openssh.
+      * The idea is to copy the ssh key to the rPI that will be used to make the image that will be restored for all the other rPIs.
+  * Install Ansible using [their documentation][].
+      * If you want to use more advanced rsync options (i.e. rsh, controlmaster on rsync) then change the synchronize.py file with the one in the repo after changing the options in it.
+      *  *Use at your own risk. rsh is insecure, and controlmaster may affect performance negatively depending on your setup.*
+
+[their documentation]: http://docs.ansible.com/ansible/intro_installation.html
+
+### Raspberry PI Setup: ###
+  * Load the latest version of [debian/raspbian onto the rPIs.][]
+  * Configure each rPI with their own hostname, WiFi access, IP address (if static), camera module, timezone, etc.
+      * This repo has bash files in [pi_config](pi_config) that I used for fast configuration of the Raspberry PI. They are very specific to our configuration, but if you want to use them as an idea of how to more quickly configure rPIs please take a look. **Use these scripts at your own risk**
+          * The debian version used is Raspbian GNU/Linux 8 (jessie) for these scripts.
+   * At minimum before Ansible can work with the rPIs, they need an openssh-server (`sudo apt-get install openssh-server`); a unique hostname, IP address, or both; ssh keys from the centralized server copied onto them; and a user.
       * The preferred method is to configure one rPI with all of the settings which are the same across the entire bramble and then clone that image using any of the [available methods][].
-  * **Image Storage**
-      * The images are stored on the centralized Ansible server that copies the pictures using the playbooks.
+
+[debian/raspbian onto the rPIs.]: https://www.raspberrypi.org/downloads/raspbian/
+
+### Managing Bramble with Ansible ###
+  * The [hosts file / Ansible inventory][] will need to be changed entirely to match your setup.
+  * The [configuration file][] will also need to be changed to match your setup or not changed at all.
+  * Modify the [Ansible playbooks][] to work for your setup.
+      * [Ansible Playbooks Documentation][]
+  * The playbook-ansible bash script takes logs with timestamps and retries at least three times with increasing timeouts.
+      * Make sure to modify it for your environment if you will be using it.
+
+[hosts file / Ansible inventory]: http://docs.ansible.com/ansible/intro_inventory.html
+
+[configuration file]: http://docs.ansible.com/ansible/intro_configuration.html
+
+[Ansible Playbooks Documentation]: http://docs.ansible.com/ansible/playbooks_intro.html
+
+[Ansible playbooks]: playbooks/
+
+### Image Storage ###
+  * The images are stored on the centralized Ansible server that copies the pictures using the playbooks.
 
 ## For more in-depth installation instructions visit the [Installation, setup, and user guide][] ##
       
