@@ -48,7 +48,7 @@ EPSCOR_Bramble_GH9C
 
 ## For more in-depth installation instructions visit the [Installation, setup, and user guide][] ##
 
-[Installation guide]: Installation_guide.md
+[Installation, setup, and user guide]: Installation_guide.md
 
 ## Initial Setup ##
   * **Raspberry PI Setup:**
