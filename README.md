@@ -46,7 +46,7 @@ EPSCOR_Bramble_GH9C
 
 [here]: http://programmers.stackexchange.com/questions/212808/treating-a-1d-data-structure-as-2d-grid
 
-## For more in-depth installation instructions visit the [Installation guide][] ##
+## For more in-depth installation instructions visit the [Installation, setup, and user guide][] ##
 
 [Installation guide]: Installation_guide.md
 
@@ -54,9 +54,9 @@ EPSCOR_Bramble_GH9C
   * **Raspberry PI Setup:**
       * Load the latest version of debian onto the rPIs.
       * Configure each rPI with their own hostname, WiFi access, IP address (if static), etc.
-          * This repo has bash files in [pi_config](pi_config) that I used for fast configuration of the Raspberry PI. They are very specific to our configuration, but if you want to use them as an idea of how to more quickly configure rPIs please take a look.
-          * The debian version used is Raspbian GNU/Linux 8 (jessie) for these scripts.
-          * Use at your own risk.
+          * This repo has bash files in [pi_config](pi_config) that I used for fast configuration of the Raspberry PI. They are very specific to our configuration, but if you want to use them as an idea of how to more quickly configure rPIs please take a look. **Use tese scripts at your own risk**
+              * The debian version used is Raspbian GNU/Linux 8 (jessie) for these scripts.
+              * *Use at your own risk.*
       * At minimum before Ansible can work with the rPIs, they need an openssh-server (`sudo apt-get install openssh-server`); a unique hostname, IP address, or both; ssh keys from the centralized server copied onto them; and a user.
       * The preferred method is to configure one rPI with all of the settings which are the same across the entire bramble and then clone that image using any of the [available methods][].
   * **Centralized server setup:**
@@ -68,6 +68,10 @@ EPSCOR_Bramble_GH9C
           *  Use at your own risk.
       * Use the [playbooks (.yml files) here](playbooks) after setting up your ansible!
       * The hosts file will need to be changed entirely to match your setup.
+  * **Image Storage**
+      * The images are stored on the centralized Ansible server that copies the pictures using the playbooks.
+
+## For more in-depth installation instructions visit the [Installation, setup, and user guide][] ##
       
 ## Things to Know Before Embarking on a Bramble Adventure ##
   * [How To Install An Image Onto A Raspberry Pi][]
