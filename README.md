@@ -51,14 +51,7 @@ EPSCOR_Bramble_GH9C
 [Installation, setup, and user guide]: Installation_guide.md
 
 ## Initial Setup ##
-  * **Raspberry PI Setup:**
-      * Load the latest version of debian onto the rPIs.
-      * Configure each rPI with their own hostname, WiFi access, IP address (if static), etc.
-          * This repo has bash files in [pi_config](pi_config) that I used for fast configuration of the Raspberry PI. They are very specific to our configuration, but if you want to use them as an idea of how to more quickly configure rPIs please take a look. **Use these scripts at your own risk**
-              * The debian version used is Raspbian GNU/Linux 8 (jessie) for these scripts.
-       * At minimum before Ansible can work with the rPIs, they need an openssh-server (`sudo apt-get install openssh-server`); a unique hostname, IP address, or both; ssh keys from the centralized server copied onto them; and a user.
-      * The preferred method is to configure one rPI with all of the settings which are the same across the entire bramble and then clone that image using any of the [available methods][].
-  * **Centralized server setup:**
+  * **Centralized server setup / Ansible setup:**
       * Generate ssh-key for user that will interact with the bramble.
           * `ssh-copy-id` will be the preferred command to copy keys.
           * If automating, install and use `sshpass` to use the default rPI password without having to input it 180 times.
@@ -67,6 +60,13 @@ EPSCOR_Bramble_GH9C
           *  Use at your own risk.
       * Use the [playbooks (.yml files) here](playbooks) after setting up your ansible!
       * The hosts file will need to be changed entirely to match your setup.
+  * **Raspberry PI Setup:**
+      * Load the latest version of debian onto the rPIs.
+      * Configure each rPI with their own hostname, WiFi access, IP address (if static), etc.
+          * This repo has bash files in [pi_config](pi_config) that I used for fast configuration of the Raspberry PI. They are very specific to our configuration, but if you want to use them as an idea of how to more quickly configure rPIs please take a look. **Use these scripts at your own risk**
+              * The debian version used is Raspbian GNU/Linux 8 (jessie) for these scripts.
+       * At minimum before Ansible can work with the rPIs, they need an openssh-server (`sudo apt-get install openssh-server`); a unique hostname, IP address, or both; ssh keys from the centralized server copied onto them; and a user.
+      * The preferred method is to configure one rPI with all of the settings which are the same across the entire bramble and then clone that image using any of the [available methods][].
   * **Image Storage**
       * The images are stored on the centralized Ansible server that copies the pictures using the playbooks.
 
