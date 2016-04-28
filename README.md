@@ -7,7 +7,7 @@ EPSCOR_Bramble_GH9C
 
 ### Raspberry PI: ###
   * 165 Raspberry PIs (rPIs) on a gantry above the greenhouse.
-  * Powered by rPI adapters plugged into power strips.
+  * Powered by rPI adapters plugged into power strips and wireless internet access is provided via WiFi dongles.
   * Make sure there is no electromagnetic interference by assuring no loops in the power cables.
   * One Raspberry PI (omegabackup) kept outside with monitor and keyboard for quick maintenance.
   * One Raspberry PI (alphabackup) kept for testing new scripts to be sent to rPIs.
