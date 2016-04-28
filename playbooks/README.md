@@ -10,9 +10,10 @@ Ansible Playbooks and Playbook Bash script
       * No major changes aside from ssh. These are made for the system we have because of the interference.
           * `-c arcfour256` sets encryption to be the least secure, but fastest when using ssh. rPI must be setup to accept it.
               * To allow the rPIs to accept arcfour256 you'd have to append these lines to the end of the `/etc/ssh/sshd_config` file:
-              * ```
-#Adding ciphers back in
-ciphers arcfour256,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com```
+              * ```#Adding ciphers back in
+              
+                   ciphers arcfour256,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com
+                ```
           * `-o ControlMaster=auto` ssh option decide if it should use ControlMaster
           * `-o ControlPersist=5m` ssh option to keep connection open for 5 minutes even if there is no activity.
           * `-o ServerAliveCountMax=10` ssh option to kill connection if the server hasn't responded after 10 pings.
