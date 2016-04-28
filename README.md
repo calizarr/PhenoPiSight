@@ -6,7 +6,7 @@ EPSCOR_Bramble_GH9C
 ## Information about the project ##
 
 ### Raspberry PI: ###
-  * 180 Raspberry PIs (rPIs) on a gantry above the greenhouse.
+  * 165 Raspberry PIs (rPIs) on a gantry above the greenhouse.
   * Powered by rPI adapters plugged into power strips.
   * Make sure there is no electromagnetic interference by assuring no loops in the power cables.
   * One Raspberry PI (omegabackup) kept outside with monitor and keyboard for quick maintenance.
