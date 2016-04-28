@@ -54,7 +54,7 @@ EPSCOR_Bramble_GH9C
   * **Raspberry PI Setup:**
       * Load the latest version of debian onto the rPIs.
       * Configure each rPI with their own hostname, WiFi access, IP address (if static), etc.
-          * This repo has bash files in [pi_config](pi_config) that I used for fast configuration of the Raspberry PI. They are very specific to our configuration, but if you want to use them as an idea of how to more quickly configure rPIs please take a look. **Use tese scripts at your own risk**
+          * This repo has bash files in [pi_config](pi_config) that I used for fast configuration of the Raspberry PI. They are very specific to our configuration, but if you want to use them as an idea of how to more quickly configure rPIs please take a look. **Use these scripts at your own risk**
               * The debian version used is Raspbian GNU/Linux 8 (jessie) for these scripts.
               * *Use at your own risk.*
       * At minimum before Ansible can work with the rPIs, they need an openssh-server (`sudo apt-get install openssh-server`); a unique hostname, IP address, or both; ssh keys from the centralized server copied onto them; and a user.
