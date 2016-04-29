@@ -1,6 +1,8 @@
 Installation, setup, and user guide
 ===================================
 
+In this documentation, we outline the requirements for installation, setup, and management of a wirelessly connected *N* Raspberry Pi bramble.
+
 ### Getting Started ###
   * Raspberry Pis will require some usage of the Linux terminal and it's worth knowing how to get around a bit. The Raspberry Pi foundation provides a [quick tutorial][].
   * As great as it is, it does not give you information on how to use `nano` the default Linux text editor:
@@ -45,7 +47,7 @@ Installation, setup, and user guide
 ### Ansible Setup ###
   * Depending on the setup of the centralized server that will be launching Ansible, you will need to pick what is best for you from the [Ansible installation documentation][].
   * We installed Ansible from github for a rootless (no privileges) installation.
-      * If installed on a server infrastructure, if you do not have access to an administrator or administrator privileges, a github installation may be the best option for you.
+      * If installed on a server infrastructure, and you do not have access to an administrator or administrator privileges, a github installation may be the best option for you.
   * Ansible setup is rather straightforward and should not be very problematic.
   * After you have installed Ansible on your server, make sure to generate ssh keys for the server.
       * [GitHub Generating SSH-Key][]
@@ -86,7 +88,7 @@ Installation, setup, and user guide
 
 #### Setting up your Raspberry Pi: ####
 
-  * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI capable monitor.
+  * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI-capable monitor.
   * **WiFi:**
       * Set up the network following instructions using the Graphical User Interface (GUI): [GUI WiFi Setup][]
           * Look only under the **New Wifi Interface** heading.
