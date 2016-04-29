@@ -70,11 +70,27 @@
       cron: name="Take pictures 5 AM to 9 PM" state=absent
       when: cron_remove
 
+    - name: Check if camera_single.py exists
+      stat:
+        path: /home/pi/camera_single.py
+      register: cam_single
+      
+    - name: Change camera_single.py attributes from the rPIs.
+      file:
+        path: /home/pi/camera_single.py
+        owner: pi
+        group: pi
+        mode: "u+x"
+      become: yes
+      when: cam_single.stat.exists
+      
     - name: Send camera_single.py to the rPIs.
       copy:
         src: /home/clizarraga/Projects/EPSCOR_Bramble_GH9C/pi_files/camera_single.py
         dest: /home/pi/camera_single.py
+      become: no
       when: python_script
+      
 
 - hosts: clizarraga_chronos
   vars:
