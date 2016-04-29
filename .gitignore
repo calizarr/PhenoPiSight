@@ -1,4 +1,5 @@
 playbooks/logs/*.bak
 playbooks/logs/*.log
+playbooks/logs/*.retry
 #*#
 *~
