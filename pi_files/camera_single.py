@@ -173,7 +173,7 @@ with picamera.PiCamera() as camera:
             json.dump(metadata, fp, sort_keys=True, indent=4)
 
         # Creating directory structure tar
-        dir_join = hostname+"_"+now.strftime("%Y-%m-%d-$H")
+        dir_join = hostname+"_"+now.strftime("%Y-%m-%d-%H")
         with tarfile.open(dir_join+".tar", "w") as tar:
             tar.add(date_directory, arcname=date)
         shutil.rmtree(date_directory)
