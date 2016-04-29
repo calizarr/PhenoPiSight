@@ -11,6 +11,7 @@ import os
 import tarfile
 import zipfile
 import shutil
+import re
 
 from fractions import Fraction
 from datetime import datetime, timedelta
@@ -114,6 +115,13 @@ with picamera.PiCamera() as camera:
         print(os.getcwd())
         # Getting the hostname of the rPI
         hostname = socket.gethostname()
+        # Zero padding hostname if it has numbers after the initial host.
+        # Comment out if your hostname has numbers in the middle of letters...
+        r = re.compile(r'([a-zA-z]+)([0-9]+)')
+        m = r.match(hostname)
+        letters = m.group(1)
+        numbers = m.group(2).zfill(3)
+        hostname = letters+numbers
         print("The hostname is {0}".format(hostname))
         # Setting the camera resolution to max, and letting the camera adjust settings.
         camera.resolution = (2592, 1944)
