@@ -69,7 +69,7 @@ In this documentation, we outline the requirements for installation, setup, and 
       * In these examples, I am using an 8 GB sd card
       * Linux Terminal: Open a terminal, type or copy/paste `df -h`, and look at the  `/dev/root` Filesystem and its `Size` parameter
       * ![size_screenshot][]
-      * Windows: Go into Windows Explorer, Right click the SD card drive, go to properties, and check the capacity
+      * Windows: Go into Windows Explorer, right click the SD card drive, go to properties, and check the capacity
           * ![windows_explorer_capacity][]
           * If it already has a Linux filesystem format, Windows won't be able to read it directly
           * Instead, press `Win+R` or open a command prompt, then type `diskmgmt.msc` and look for a Disk about the size of your SD card
