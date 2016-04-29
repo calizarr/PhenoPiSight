@@ -1,6 +1,8 @@
 EPSCoR_Bramble_GH9C
 ===================
 
+In this documentation, we outline the management of 165 Raspberry Pis currently deployed and wirelessly maintained in Greenhouse 9C at the Donald Danforth Plant Science Center. Also included is our current pipeline for image analysis using VisualSFM.
+
 ## A cluster of Raspberry PIs is generally referred to as a bramble. ##
 
 ## Information about the project ##
