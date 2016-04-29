@@ -1,3 +1,4 @@
-playbooks/logs/*
+playbooks/logs/*.bak
+playbooks/logs/*.log
 #*#
 *~
