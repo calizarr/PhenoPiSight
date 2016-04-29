@@ -72,7 +72,7 @@
 
     - name: Send camera_single.py to the rPIs.
       copy:
-        src: /shares/tmockler_share/clizarraga/EPSCOR_Bramble_GH9C/pi_files/camera_single.py
+        src: /shares/tmockler_share/clizarraga/Projects/EPSCOR_Bramble_GH9C/pi_files/camera_single.py
         dest: /home/pi/
       when: python_script
 

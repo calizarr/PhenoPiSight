@@ -12,8 +12,8 @@ Installation, setup, and user guide
   * You will also need an introduction to GitHub to clone and use this repository.
       * GitHub primer to get you started: [GitHub Introduction: Hello World!][]
   * To clone this GitHub repository: 
-      * Type or copy/paste: `git clone git@github.com:calizarr/EPSCOR_Bramble_GH9C.git` to clone this repository into a folder named EPSCOR\_Bramble\_GH9C.
-      * If you want to clone it into a different folder name, type: `git clone git@github.com:calizarr/EPSCOR_Bramble_GH9C.git <YourFolderName>`
+      * Type or copy/paste: `git clone git@github.com:calizarr/EPSCoR_Bramble_GH9C.git` to clone this repository into a folder named EPSCoR\_Bramble\_GH9C.
+      * If you want to clone it into a different folder name, type: `git clone git@github.com:calizarr/EPSCoR_Bramble_GH9C.git <YourFolderName>`
 
 [quick tutorial]: https://www.raspberrypi.org/documentation/usage/terminal/README.md
 
@@ -44,7 +44,7 @@ Installation, setup, and user guide
 
 ### Ansible Setup ###
   * Depending on the setup of the centralized server that will be launching Ansible, you will need to pick what is best for you from the [Ansible installation documentation][].
-  * We installed ansible from github for a rootless (no privileges) installation.
+  * We installed Ansible from github for a rootless (no privileges) installation.
       * If installed on a server infrastructure, if you do not have access to an administrator or administrator privileges, a github installation may be the best option for you.
   * Ansible setup is rather straightforward and should not be very problematic.
   * After you have installed Ansible on your server, make sure to generate ssh keys for the server.
@@ -189,7 +189,7 @@ Installation, setup, and user guide
           * If you could previously connect via ssh by hostname, you don't need ip addresses. You could also `ping <HostnameOfRaspberryPi>` to test.
       * Use it as a guide, but almost everything in the hosts file must be different and specific to your setup.
       * I find it useful to define a group with localhost (the server) for use in playbooks. In our hosts file, it is the `clizarraga_chronos` group.
-  * If you need to use proxy settings or specific ssh settings, then you need to edit the [ansible configuration file][].
+  * If you need to use proxy settings or specific ssh settings, then you need to edit the [Ansible configuration file][].
       * A sample configuration file is here: [config](playbooks/ansible.cfg)
       * [Default configuration file from Ansible.][]
       * Most of the changes are for ssh options because of connectivity and interference issues. Head to the [playbooks folder readme][] for more information.
@@ -197,16 +197,16 @@ Installation, setup, and user guide
 [Ansible Inventory]: http://docs.ansible.com/ansible/intro_inventory.html
 
 [playbooks folder readme]: playbooks/README.md
-  
-[ansible configuration file]: http://docs.ansible.com/ansible/intro_configuration.html
+
+[Ansible configuration file]: http://docs.ansible.com/ansible/intro_configuration.html
 
 [Default configuration file from Ansible.]: https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg
 
 #### Ansible Playbooks ####
   * So, you've setup your Raspberry PIs and you have installed and set up Ansible with your own hosts and configuration file.
-      * You should test your ansible install by running `ansible -m ping all` from a terminal on the Ansible server.
+      * You should test your Ansible install by running `ansible -m ping all` from a terminal on the Ansible server.
   * This repository contains a [playbooks folder][] with playbooks made to manage the Raspberry Pis via the centralized server.
-      * Before changing any playbooks, please read the [ansible playbooks documentation][].
+      * Before changing any playbooks, please read the [Ansible playbooks documentation][].
   * The playbooks have a lot of assumptions built into them:
       * All images taken on the rPI use [camera_single.py][].
       * All images on the rPI are stored in `/home/pi/Images/`
@@ -257,7 +257,7 @@ Installation, setup, and user guide
               
 [playbooks folder]: playbooks/
 
-[ansible playbooks documentation]: http://docs.ansible.com/ansible/playbooks_intro.html
+[Ansible playbooks documentation]: http://docs.ansible.com/ansible/playbooks_intro.html
 
 [camera_single.py]: pi_files/camera_single.py
 
