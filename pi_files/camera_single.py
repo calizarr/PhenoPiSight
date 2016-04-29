@@ -121,9 +121,12 @@ with picamera.PiCamera() as camera:
         # then everything else afterwards indiscriminately.
         r = re.compile(r'([a-zA-z]+)([0-9]+)(.*)')
         m = r.match(hostname)
-        letters = m.group(1)
-        numbers = m.group(2).zfill(3)
-        hostname = letters+numbers
+        try:
+            letters = m.group(1)
+            numbers = m.group(2).zfill(3)
+            hostname = letters+numbers
+        except AttributeError:
+            print("No numbers in hostname")
         print("The hostname is {0}".format(hostname))
         # Setting the camera resolution to max, and letting the camera adjust settings.
         camera.resolution = (2592, 1944)
