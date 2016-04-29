@@ -117,7 +117,9 @@ with picamera.PiCamera() as camera:
         hostname = socket.gethostname()
         # Zero padding hostname if it has numbers after the initial host.
         # Comment out if your hostname has numbers in the middle of letters...
-        r = re.compile(r'([a-zA-z]+)([0-9]+)')
+        # It will capture the first consecutive string of letters, then the first consecutive string of numbers,
+        # then everything else afterwards indiscriminately.
+        r = re.compile(r'([a-zA-z]+)([0-9]+)(.*)')
         m = r.match(hostname)
         letters = m.group(1)
         numbers = m.group(2).zfill(3)
