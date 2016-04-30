@@ -86,7 +86,7 @@ In this documentation, we outline the requirements for installation, setup, and 
 
 [debian jessie]: https://www.raspberrypi.org/downloads/raspbian/
 
-#### Setting up your Raspberry Pi: ####
+#### Setting up your Raspberry Pi ####
 
   * Log in to the Original Raspberry PI using a usb mouse and keyboard and an HDMI-capable monitor
   * **WiFi:**
@@ -158,7 +158,7 @@ In this documentation, we outline the requirements for installation, setup, and 
 
 [pi_config/interfaces]: pi_config/interfaces
 
-##### Cloning your Raspberry Pi: #####
+##### Cloning your Raspberry Pi #####
   * **Before cloning make sure you have followed the necessary Raspberry Pi setup steps above.**
   * After setting up the first Raspberry Pi, you will want to clone the image and copy it onto all your other Raspberry PI SD Cards
       * Follow any of these guides to backup then restore (clone) your Raspberry PI Image

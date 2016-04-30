@@ -7,7 +7,7 @@ In this documentation, we outline the management of 165 Raspberry Pis currently 
 
 ## Information about the project ##
 
-### Raspberry PI: ###
+### Raspberry PI ###
   * 165 Raspberry PIs (rPIs) on a gantry above the greenhouse
   * Powered by rPI adapters plugged into power strips and wireless internet access is provided via WiFi dongles
   * Make sure there is no electromagnetic interference by assuring no loops in the power cables
@@ -71,7 +71,7 @@ In this documentation, we outline the management of 165 Raspberry Pis currently 
 
 [WiPi Dongle]: https://www.element14.com/community/docs/DOC-69361/l/wifi-usb-dongle-for-raspberry-pi
 
-### Centralized server setup / Ansible setup: ###
+### Centralized server setup / Ansible setup ###
   * Generate ssh-key for user that will interact with the bramble
       * `ssh-copy-id` is the best command to copy keys. It is usually installed with openssh
       * The idea is to copy the ssh key to the rPI that will be used to make the image that will be restored for all the other rPIs
@@ -81,7 +81,7 @@ In this documentation, we outline the management of 165 Raspberry Pis currently 
 
 [their documentation]: http://docs.ansible.com/ansible/intro_installation.html
 
-### Raspberry PI Setup: ###
+### Raspberry PI Setup ###
   * Load the latest version of [debian/raspbian onto the rPIs.][]
   * Configure each rPI with their own hostname, WiFi access, IP address (if static), camera module, timezone, etc
       * This repo has bash files in [pi_config](pi_config) that I used for fast configuration of the Raspberry PI. They are very specific to our configuration, but if you want to use them as an idea of how to more quickly configure rPIs please take a look. **Use these scripts at your own risk**
