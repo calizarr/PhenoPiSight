@@ -94,7 +94,8 @@ def make_metadata(experiment, hostname, ip, camera, grid):
         "exposure_compensation": camera.exposure_compensation,
         "exposure_mode": camera.exposure_mode,
         "exposure_speed": camera.exposure_speed,
-        "flash_mode": camera.flash_mode
+        "flash_mode": camera.flash_mode,
+        "EXIF information": camera.exif_tags
     }
 
     # Setting values that are Fractions to their string representations i.e. "3/4" instead of Fraction(3, 4)
@@ -154,10 +155,11 @@ with picamera.PiCamera() as camera:
         height = 30
         offset = 10
         grid = convert_ip(get_ip(), width, height, offset)
-        filename = "{hostname}_Y{y}_X{x}_{now}.png".format(hostname=hostname, x=grid[1], y=grid[0], now=now.strftime("%Y-%m-%d-%H-%M"))
+        ext = "jpg"
+        filename = "{hostname}_Y{y}_X{x}_{now}.{ext}".format(hostname=hostname, x=grid[1], y=grid[0], ext=ext, now=now.strftime("%Y-%m-%d-%H-%M"))
         # filename = hostname+"_"+now.strftime("%Y-%m-%d-%H-%M")+".png"
         filename = os.path.join(hour_directory, filename)
-        camera.capture(filename)
+        camera.capture(filename, quality=100)
         print("Captured %s" % filename)
         
         # For multi-platform ip getting
