@@ -243,6 +243,9 @@ In this documentation, we outline the requirements for installation, setup, and 
               * To understand more about cron, read `man cron` and the [Ansible cron module][]
           * Task: `Send camera_single.py to the rPIs`
               * Change `src:` to the absolute path of `camera_single.py` on your Ansible server
+          * GPS tasks(s):
+              * Task to use `master_gps.txt` coordinate file to set `gps_info.txt` in the home directory of every rPI.
+              * An example file is included in the repo.
           * There is a secondary playbook in the file aimed at the localhost (`clizarraga_chronos`) to set up a cron job on it
               * Change the `hosts:` to your localhost designation in your hosts/inventory file
               * Change the `jobs="cd <YourPlaybooksDirectoryHere> && time bash -x playbook-ansible.sh -i <YourHostsFileHere> -vv`
