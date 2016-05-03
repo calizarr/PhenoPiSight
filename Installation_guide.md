@@ -137,10 +137,10 @@ In this documentation, we outline the requirements for installation, setup, and 
           `filename = "{hostname}_Y{y}_X{x}_{now}.png".format(hostname=hostname, x=grid[1], y=grid[0], now=now.strftime("%Y-%m-%d-%H-%M"))`  
           * Line 145 looks like: `# filename = hostname+"_"+now.strftime("%Y-%m-%d-%H-%M")+".png"`
           * If you have GPS info for each rPI, add a `gps_info.txt` to the home directory.
-              * There is a GPS section in the camera script. The file should have the proper values in this manner:
-                  * |GPSLatitudeRef;| GPSLatitude;| GPSLongitudeRef;| GPSLongitude;| GPSAltitudeRef;| GPSAltitudeRef;| GPSMeasureMode|
-                  * |---------------|:-----------:|----------------:|-------------:|---------------:|---------------:|--------------:|
-                  * |N; |38674226/1000000,0/1,0/1;| W;| 90397316/1000000,0/1,0/1; |0; |604/1; |2 |
+              * There is a GPS section in the camera script. The file should have the proper values in this manner:  
+|GPSLatitudeRef;| GPSLatitude;| GPSLongitudeRef;| GPSLongitude;| GPSAltitudeRef;| GPSAltitudeRef;| GPSMeasureMode|
+|---------------|:-----------:|----------------:|-------------:|---------------:|---------------:|--------------:|
+|N; |38674226/1000000,0/1,0/1;| W;| 90397316/1000000,0/1,0/1; |0; |604/1; |2 |
       * After altering the script, copy the [python camera script][] to `/home/pi/`
           * You can do it by copying the [python camera script][] to the `/home/pi/` folder in the Raspberry Pi
           * You could also clone the repository onto the Original Raspberry Pi, alter the script, and then move it to `/home/pi` by opening a terminal then type or copy/paste `mv camera_single.py /home/pi`
