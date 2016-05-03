@@ -110,6 +110,7 @@ def make_metadata(experiment, hostname, ip, camera, grid):
 with picamera.PiCamera() as camera:
     # Getting the image directory for all of the rPIs. Should become a passable parameter.
     image_dir = os.path.join("/home", "pi", "Images")
+    prev_dir = os.getcwd()
     # Switching into the directory where the folders and tarballs exist.
     with cd(image_dir):
         # Testing if the switch was proper
@@ -136,6 +137,7 @@ with picamera.PiCamera() as camera:
 
         # Getting the current timestamp
         now = datetime.now()
+        now_utc = datetime.utcnow()
         date = now.strftime("%Y-%m-%d")
         hour = now.strftime("%Y-%m-%d-%H")
         # Full path directories.
@@ -150,6 +152,36 @@ with picamera.PiCamera() as camera:
         elif not os.path.exists(hour_directory):
             os.makedirs(hour_directory)
 
+        # For multi-platform ip getting
+        ip = get_ip()
+
+        # Adding GPS exif date.
+        # Comment out if text file 'gps_info.txt' is not in home directory and if check doesn't work.
+        # The form is: GPSLatitudeRef; GPSLatitude; GPSLongitudeRef; GPSLongitude; GPSAltitudeRef; GPSAltitudeRef; GPSMeasureMode
+        gps_filename = "gps_info.txt"
+        gps_path = os.path.join(prev_dir, gps_filename)
+        if os.path.exists(gps_path):
+            with open(gps_path) as gps:
+                gps_exif = gps.readline()
+            GPSLatitudeRef, GPSLatitude, GPSLongitudeRef, GPSLongitude, GPSAltitudeRef, GPSAltitude, GPSMeasureMode = [info.strip() for info in gps_exif.split(';')]
+            GPSTimeStamp = now_utc.strftime("%H:%M:%S")
+            GPSTimeStamp = ','.join([x+"/1" for x in GPSTimeStamp.split(':')])
+            GPS = {
+                'GPSLatitudeRef': GPSLatitudeRef,
+                'GPSLatitude': GPSLatitude,
+                'GPSLongitudeRef': GPSLongitudeRef,
+                'GPSLongitude': GPSLongitude,
+                'GPSAltitudeRef': GPSAltitudeRef,
+                'GPSAltitude':GPSAltitude,
+                'GPSMeasureMode': GPSMeasureMode,
+                'GPSTimeStamp': GPSTimeStamp
+                }
+            for key, value in GPS.items():
+                key_comb = "GPS."+key
+                camera.exif_tags[key_comb] = value
+        else:
+            print("No gps info file for {hostname} at {ip}".format(hostname=hostname, ip=ip))
+
         # Making the filename for the capture of the image.
         width = 6
         height = 30
@@ -161,9 +193,6 @@ with picamera.PiCamera() as camera:
         filename = os.path.join(hour_directory, filename)
         camera.capture(filename, quality=100)
         print("Captured %s" % filename)
-        
-        # For multi-platform ip getting
-        ip = get_ip()
 
         # Getting all the metadata that will be going into the json file.
         metadata_name = filename.split('.')[0]
