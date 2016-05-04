@@ -72,12 +72,6 @@ for ind in range(11, 191):
     shift_indices = shift_indices + range(11, 191, 6) + range(12, 191, 6)
     rPI_x_mod = rPI_x
     rPI_y_mod = rPI_y
-    if ind in shift_indices:
-        rPI_x_mod = rPI_x_new
-        rPI_y_mod = rPI_y_new + rPI_y
-    else:
-        rPI_x_mod = rPI_x
-        rPI_y_mod = rPI_y
     # rPI_lat = prev_lat + (rPI_x_mod * (prev_x - x))
     # rPI_long = prev_long + (rPI_y_mod * (prev_y - y))
     # rPI_lat = prev_lat + (rPI_x_mod * (x - prev_x))
@@ -108,6 +102,9 @@ for ind in range(11, 191):
     #     rPI_long = prev_long + (rPI_y_mod * (y - prev_y))
     # else:
     #     rPI_long = prev_long
+    if ind in shift_indices:
+        rPI_lat += rPI_x_new
+        rPI_long += rPI_y_new
     rPI_point = QgsPoint(rPI_lat, rPI_long)
     rPI_coords = [rPI_lat, rPI_long]
     points.append(rPI_point)
