@@ -26,6 +26,9 @@ points.append(rPI_145)
 rPI_x = 0.9779
 # rPIs are separated by rPI_y in meters
 rPI_y = 0.4572
+# If they're in column 4 and 5 they have a different offset.
+rPI_x_new = 0.9652
+rPI_y_new = 0.1905
 
 # Deriving initial rPI coordinates.
 # We start at 10.9.0.11 or ShakoorCamera11 and proceed to generate points from there.
@@ -55,18 +58,27 @@ for ind in range(12, 191):
     formula = abs(ind-(width*height)-offset)
     y = (formula / width) + 1
     x = (formula % width) + 1
+    # Adding shift for the first column
+    shift_indices = []
+    shift_indices = shift_indices + range(11, 191, 6) + range(12, 191, 6)
+    if ind in shift_indices:
+        rPI_x_mod = rPI_x_new
+        rPI_y_mod = rPI_y_new
+    else:
+        rPI_x_mod = rPI_x
+        rPI_y_mod = rPI_y
     # Calculating latitude longitude changes via grid coords
     if x < prev_x:
-        rPI_lat = prev_lat + (rPI_x * (prev_x - x))
+        rPI_lat = prev_lat + (rPI_x_mod * (prev_x - x))
     elif x > prev_x:
-        rPI_lat = prev_lat - (rPI_x * (x - prev_x))
+        rPI_lat = prev_lat - (rPI_x_mod * (x - prev_x))
     else:
         rPI_lat = prev_lat
     # Doing the same for y / longitude
     if y < prev_y:
-        rPI_long = prev_long - (rPI_y * (prev_y - y))
+        rPI_long = prev_long - (rPI_y_mod * (prev_y - y))
     elif y > prev_y:
-        rPI_long = prev_long + (rPI_y * (y - prev_y))
+        rPI_long = prev_long + (rPI_y_mod * (y - prev_y))
     else:
         rPI_long = prev_long
     rPI_point = QgsPoint(rPI_lat, rPI_long)
