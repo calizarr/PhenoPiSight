@@ -8,7 +8,8 @@ coordinates = []
 raspberries = []
 width = 6
 height = 30
-offset = 10
+# offset = 10
+offset = 11
 
 # Initial GPS point that existed from standing in Greenhouse 9C and checking my location.
 initial_lat = -10062973.096
@@ -20,8 +21,10 @@ rPI_145_long = initial_long + 0.5461
 rPI_145 = QgsPoint(rPI_145_lat, rPI_145_long)
 # points.append(rPI_145)
 # We need to use the X, Y coordinates to convert latitude and longitude.
-init_x = (abs(145-(width*height)-offset) % width) + 1
-init_y = (abs(145-(width*height)-offset) / width) + 1
+# init_x = (abs(145-(width*height)-offset) % width) + 1
+# init_y = (abs(145-(width*height)-offset) / width) + 1
+init_x = (abs(145-offset) % width) + 1
+init_y = (abs(145-offset) / width) + 1
 
 # Coordinates that the Raspberry PIs are separated by in an ideal grid.
 # Still have to adjust for the first column that is off by a few.
@@ -60,7 +63,8 @@ prev_long = rPI_145_long
 # Remember python ranges go to n-1
 for ind in range(11, 191):
     # Formula to calculate x, y coordinates
-    formula = abs(ind-(width*height)-offset)
+    # formula = abs(ind-(width*height)-offset)
+    formula = abs(ind - offset)
     y = (formula / width) + 1
     x = (formula % width) + 1
     # Adding shift for the first column
