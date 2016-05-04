@@ -73,7 +73,7 @@ for ind in range(11, 191):
     rPI_x_mod = rPI_x
     rPI_y_mod = rPI_y
     if ind in shift_indices:
-        rPI_x_mod = rPI_x_new + rPI_x
+        rPI_x_mod = rPI_x_new
         rPI_y_mod = rPI_y_new + rPI_y
     else:
         rPI_x_mod = rPI_x
