@@ -18,7 +18,10 @@ initial_long = 4675266.934
 rPI_145_lat = initial_lat + 2.794
 rPI_145_long = initial_long + 0.5461
 rPI_145 = QgsPoint(rPI_145_lat, rPI_145_long)
-points.append(rPI_145)
+# points.append(rPI_145)
+# We need to use the X, Y coordinates to convert latitude and longitude.
+init_x = (abs(145-(width*height)-offset) % width) + 1
+init_y = (abs(145-(width*height)-offset) / width) + 1
 
 # Coordinates that the Raspberry PIs are separated by in an ideal grid.
 # Still have to adjust for the first column that is off by a few.
@@ -36,24 +39,26 @@ rPI_11_lat = rPI_145_lat - (rPI_x * 2)
 rPI_11_long = rPI_145_long + (rPI_y * 22)
 rPI_11 = QgsPoint(rPI_11_lat, rPI_11_long)
 # Points are the QgsPoint coordinates in meters
-points.append(rPI_11)
+# points.append(rPI_11)
 # Coordinates are the floats that make up the QgsPoint coordinates in meters.
-coordinates.append([rPI_11_lat, rPI_11_long])
+# coordinates.append([rPI_11_lat, rPI_11_long])
 # Raspberries is the IP address of the Raspberry PI/inventory_hostname
-raspberries.append("10.9.0.11")
+# raspberries.append("10.9.0.11")
 # We need to use the X, Y coordinates to convert latitude and longitude.
-init_x = (abs(11-(width*height)-offset) % width) + 1
-init_y = (abs(11-(width*height)-offset) / width) + 1
+# init_x = (abs(11-(width*height)-offset) % width) + 1
+# init_y = (abs(11-(width*height)-offset) / width) + 1
 
 # Trackback variables that get updated at the end of each for loop
 # updated to the just recently calculated Raspbery Pi
 prev_x = init_x
 prev_y = init_y
-prev_lat = rPI_11_lat
-prev_long = rPI_11_long
+# prev_lat = rPI_11_lat
+# prev_long = rPI_11_long
+prev_lat = rPI_145_lat
+prev_long = rPI_145_long
 # Starting from ShakoorCamera12 to ShakoorCamera190
 # Remember python ranges go to n-1
-for ind in range(12, 191):
+for ind in range(11, 191):
     # Formula to calculate x, y coordinates
     formula = abs(ind-(width*height)-offset)
     y = (formula / width) + 1
@@ -61,36 +66,40 @@ for ind in range(12, 191):
     # Adding shift for the first column
     shift_indices = []
     shift_indices = shift_indices + range(11, 191, 6) + range(12, 191, 6)
+    rPI_x_mod = rPI_x
+    rPI_y_mod = rPI_y
     if ind in shift_indices:
         rPI_x_mod = rPI_x_new
         rPI_y_mod = rPI_y_new
     else:
         rPI_x_mod = rPI_x
         rPI_y_mod = rPI_y
+    rPI_lat = prev_lat + (rPI_x_mod * (prev_x - x))
+    rPI_long = prev_long + (rPI_y_mod * (prev_y - y))
     # Calculating latitude longitude changes via grid coords
-    if x < prev_x:
-        rPI_lat = prev_lat + (rPI_x_mod * (prev_x - x))
-    elif x > prev_x:
-        rPI_lat = prev_lat - (rPI_x_mod * (x - prev_x))
-    else:
-        rPI_lat = prev_lat
-    # Doing the same for y / longitude
-    if y < prev_y:
-        rPI_long = prev_long - (rPI_y_mod * (prev_y - y))
-    elif y > prev_y:
-        rPI_long = prev_long + (rPI_y_mod * (y - prev_y))
-    else:
-        rPI_long = prev_long
+    # if x < prev_x:
+    #     rPI_lat = prev_lat + (rPI_x_mod * (prev_x - x))
+    # elif x > prev_x:
+    #     rPI_lat = prev_lat - (rPI_x_mod * (x - prev_x))
+    # else:
+    #     rPI_lat = prev_lat
+    # # Doing the same for y / longitude
+    # if y < prev_y:
+    #     rPI_long = prev_long - (rPI_y_mod * (prev_y - y))
+    # elif y > prev_y:
+    #     rPI_long = prev_long + (rPI_y_mod * (y - prev_y))
+    # else:
+    #     rPI_long = prev_long
     rPI_point = QgsPoint(rPI_lat, rPI_long)
     rPI_coords = [rPI_lat, rPI_long]
     points.append(rPI_point)
     coordinates.append(rPI_coords)
     raspberries.append("10.9.0."+str(ind))
     # Updating the trackback variables.
-    prev_x = x
-    prev_y = y
-    prev_lat = rPI_lat
-    prev_long = rPI_long
+    # prev_x = x
+    # prev_y = y
+    # prev_lat = rPI_lat
+    # prev_long = rPI_long
 
 # create a memory layer with all the rPI points
 # Most of this code came from: http://gis.stackexchange.com/questions/86812/how-to-draw-polygons-from-the-python-console
