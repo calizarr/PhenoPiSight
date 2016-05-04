@@ -102,9 +102,9 @@ for ind in range(11, 191):
     #     rPI_long = prev_long + (rPI_y_mod * (y - prev_y))
     # else:
     #     rPI_long = prev_long
-    if ind in shift_indices:
-        rPI_lat += rPI_x_new
-        rPI_long += rPI_y_new
+    # if ind in shift_indices:
+    #     rPI_lat += rPI_x_new
+    #     rPI_long += rPI_y_new
     rPI_point = QgsPoint(rPI_lat, rPI_long)
     rPI_coords = [rPI_lat, rPI_long]
     points.append(rPI_point)
