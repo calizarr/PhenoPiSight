@@ -80,8 +80,20 @@ for ind in range(11, 191):
         rPI_y_mod = rPI_y
     # rPI_lat = prev_lat + (rPI_x_mod * (prev_x - x))
     # rPI_long = prev_long + (rPI_y_mod * (prev_y - y))
-    rPI_lat = prev_lat + (rPI_x_mod * (prev_x - x))
-    rPI_long = prev_long + (rPI_y_mod * (y - prev_y))
+    # rPI_lat = prev_lat + (rPI_x_mod * (x - prev_x))
+    # rPI_long = prev_long + (rPI_y_mod * (prev_y - y))
+    if x < prev_x:
+        rPI_lat = prev_lat - (rPI_x_mod * (prev_x -x))
+    elif x > prev_x:
+        rPI_lat = prev_lat + (rPI_x_mod * (x - prev_x))
+    else:
+        rPI_lat = prev_lat
+    if y < prev_y:
+        rPI_long = prev_long + (rPI_y_mod * (prev_y - y))
+    elif y > prev_y:
+        rPI_long = prev_long - (rPI_y_mod * (y - prev_y))
+    else:
+        rPI_long = prev_long
     # Calculating latitude longitude changes via grid coords
     # if x < prev_x:
     #     rPI_lat = prev_lat + (rPI_x_mod * (prev_x - x))
