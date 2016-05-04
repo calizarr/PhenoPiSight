@@ -34,7 +34,7 @@ rPI_x = 0.9779
 rPI_y = 0.4572
 # If they're in column 4 and 5 they have a different offset.
 rPI_x_new = 0.9652
-rPI_y_new = 0.1905
+rPI_y_new = 0.2667
 
 # Deriving initial rPI coordinates.
 # We start at 10.9.0.11 or ShakoorCamera11 and proceed to generate points from there.
@@ -104,7 +104,7 @@ for ind in range(11, 191):
     #     rPI_long = prev_long
     # if ind in shift_indices:
     #     rPI_lat += rPI_x_new
-    #     rPI_long += rPI_y_new
+        rPI_long += -1 * rPI_y_new
     rPI_point = QgsPoint(rPI_lat, rPI_long)
     rPI_coords = [rPI_lat, rPI_long]
     points.append(rPI_point)
