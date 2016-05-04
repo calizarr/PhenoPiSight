@@ -135,18 +135,18 @@ with open(filename_1, 'w') as fn_1:
             if lat < 1:
                 lat = abs(lat)
                 lat_ref = "W"
-                lat = Fraction(lat)
+                lat = Fraction(lat).limit_denominator()
             else:
                 lat = abs(lat)
                 lat_ref = "E"
-                lat = Fraction(lat)
+                lat = Fraction(lat).limit_denominator()
             if lng < 1:
                 lng = abs(lng)
                 lng_ref = "S"
-                lng = Fraction(lng)
+                lng = Fraction(lng).limit_denominator()
             else:
                 lng = abs(lng)
                 lng_ref = "N"
-                lng = Fraction(lng)
+                lng = Fraction(lng).limit_denominator()
             # Printed in JPEG Exif format
             print("{IP} {lng_ref}; {lng},0/1,0/1; {lat_ref}; {lat},0/1,0/1; 0; 604/1; 2".format(IP=raspberries[index], lng_ref=lng_ref, lng=lng, lat_ref=lat_ref, lat=lat), file=fn_2)
