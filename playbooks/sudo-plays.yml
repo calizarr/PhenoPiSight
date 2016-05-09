@@ -8,7 +8,7 @@
     change_utmp: false
     use_dns: false
     change_dns: false
-    restart_ganglia: false
+    restart_ganglia: true
     restart_ssh: false
     timezone: US/Central
     timezone_change: true

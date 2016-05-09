@@ -42,6 +42,10 @@
 10.9.0.188
 10.9.0.190
 10.9.0.183
+# Commented out ones below.
+10.9.0.142
+10.9.0.153
+10.9.0.182
 #10.9.0.142 Incommunicado
 #10.9.0.153 Slow
 #10.9.0.182 Incommunicado
@@ -89,9 +93,12 @@
 10.9.0.167
 10.9.0.149
 10.9.0.131
+# Commented out ones below.
+10.9.0.113
+10.9.0.107
+10.9.0.179
 #10.9.0.113 Incommunicado
 #10.9.0.179 Incommunicado, Put back on gantry
-10.9.0.107
 #10.9.0.107 Incommunicado
 
 [Danforth_Shakoor2]
@@ -137,8 +144,10 @@
 10.9.0.89
 10.9.0.72
 10.9.0.11
+# Commented out ones are also below.
 10.9.0.84
 10.9.0.25
+10.9.0.65
 #10.9.0.84 Slow
 #10.9.0.25 Slow, almost Incommunicado
 #10.9.0.65 Camera malfunction
@@ -188,6 +197,8 @@
 10.9.0.58
 10.9.0.100
 10.9.0.22
+# Commented out ones are below.
+10.9.0.68
 #10.9.0.68 Camera malfunction
 
 
