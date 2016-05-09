@@ -14,18 +14,19 @@ offset = 11
 # Initial GPS point that existed from standing in Greenhouse 9C and checking my location.
 # initial_lat = -10062973.096
 # initial_long = 4675266.934
-initial_lat, initial_long = [float(x) for x in "-10062973.124,4675266.263".split(',')]
+# initial_lat, initial_long = [float(x) for x in "-10062973.124,4675266.263".split(',')]
+
 
 # rPI_145 is 2.794 meters (x) and 0.5461 meters (y) from the initial lat/long point
-rPI_145_lat = initial_lat + 2.794
-rPI_145_long = initial_long + 0.5461
-rPI_145 = QgsPoint(rPI_145_lat, rPI_145_long)
+# rPI_145_lat = initial_lat + 2.794
+# rPI_145_long = initial_long + 0.5461
+# rPI_145 = QgsPoint(rPI_145_lat, rPI_145_long)
 # points.append(rPI_145)
 # We need to use the X, Y coordinates to convert latitude and longitude.
 # init_x = (abs(145-(width*height)-offset) % width) + 1
 # init_y = (abs(145-(width*height)-offset) / width) + 1
-init_x = (abs(145-offset) % width) + 1
-init_y = (abs(145-offset) / width) + 1
+# init_x = (abs(145-offset) % width) + 1
+# init_y = (abs(145-offset) / width) + 1
 
 # Coordinates that the Raspberry PIs are separated by in an ideal grid.
 # Still have to adjust for the first column that is off by a few.
@@ -39,9 +40,11 @@ rPI_y_new = 0.2667
 
 # Deriving initial rPI coordinates.
 # We start at 10.9.0.11 or ShakoorCamera11 and proceed to generate points from there.
-rPI_11_lat = rPI_145_lat - (rPI_x * 2)
-rPI_11_long = rPI_145_long + (rPI_y * 22)
-rPI_11 = QgsPoint(rPI_11_lat, rPI_11_long)
+rPI_21_lat = -10062969.22919243
+rPI_21_long = 4675278.246040583
+rPI_21 = QgsPoint(rPI_21_lat, rPI_21_long)
+init_x = (abs(21-offset) % width) + 1
+init_y = (abs(21-offset) / width) + 1
 # Points are the QgsPoint coordinates in meters
 # points.append(rPI_11)
 # Coordinates are the floats that make up the QgsPoint coordinates in meters.
@@ -58,15 +61,8 @@ prev_x = init_x
 prev_y = init_y
 # prev_lat = rPI_11_lat
 # prev_long = rPI_11_long
-prev_lat = rPI_145_lat
-prev_long = rPI_145_long
-
-# Indices with which to shift certain camera columns
-shift_indices = []
-shift_indices = shift_indices + range(11, 191, 6) + range(12, 191, 6)
-shift_column_y_1 = range(16, 191, 6)
-shift_column_y_6 = range(11, 191, 6)
-
+prev_lat = rPI_21_lat
+prev_long = rPI_21_long
 # Starting from ShakoorCamera12 to ShakoorCamera190
 # Remember python ranges go to n-1
 for ind in range(11, 191):
@@ -76,6 +72,8 @@ for ind in range(11, 191):
     y = (formula / width) + 1
     x = (formula % width) + 1
     # Adding shift for the first column
+    shift_indices = []
+    shift_indices = shift_indices + range(11, 191, 6) + range(12, 191, 6)
     rPI_x_mod = rPI_x
     rPI_y_mod = rPI_y
     # rPI_lat = prev_lat + (rPI_x_mod * (prev_x - x))
@@ -83,7 +81,7 @@ for ind in range(11, 191):
     # rPI_lat = prev_lat + (rPI_x_mod * (x - prev_x))
     # rPI_long = prev_long + (rPI_y_mod * (prev_y - y))
     if x < prev_x:
-        rPI_lat = prev_lat - (rPI_x_mod * (prev_x -x))
+        rPI_lat = prev_lat - (rPI_x_mod * (prev_x - x))
     elif x > prev_x:
         rPI_lat = prev_lat + (rPI_x_mod * (x - prev_x))
     else:
@@ -111,11 +109,6 @@ for ind in range(11, 191):
     if ind in shift_indices:
         # rPI_lat += rPI_x_new
         rPI_long += -1 * rPI_y_new
-    # Final columns aren't properly offset they are in fact squished by 16 inches or 0.4064 meters
-    if ind in shift_column_y_1:
-        rPI_lat += -1 * 0.4064
-    if ind in shift_column_y_6:
-        rPI_lat += 0.4064
     rPI_point = QgsPoint(rPI_lat, rPI_long)
     rPI_coords = [rPI_lat, rPI_long]
     points.append(rPI_point)
