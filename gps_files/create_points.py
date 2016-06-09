@@ -6,6 +6,7 @@ import os
 points = []
 coordinates = []
 raspberries = []
+filenames = []
 width = 6
 height = 30
 # offset = 10
@@ -171,29 +172,46 @@ for rPI_c in coordinates:
 os.chdir("D:\\DDPSC\\Raspberry_Pi\\GIS\\")
 filename_1 = "transformed_coords.txt"
 filename_2 = "jpeg_exif_coords.txt"
+filename_3 = "vsfm_cm.gcp"
 with open(filename_1, 'w') as fn_1:
     with open(filename_2, 'w') as fn_2:
-        for index in range(len(transformed_coords)):
-            trans = transformed_coords[index]
-            lat = trans[0]
-            lng = trans[1]
-            # Printed in VisualSFM format
-            print("{0} {1} {2}".format(raspberries[index], lat, lng), file=fn_1)
-            if lat < 1:
-                lat = abs(lat)
-                lat_ref = "W"
-                lat = Fraction(lat).limit_denominator()
-            else:
-                lat = abs(lat)
-                lat_ref = "E"
-                lat = Fraction(lat).limit_denominator()
-            if lng < 1:
-                lng = abs(lng)
-                lng_ref = "S"
-                lng = Fraction(lng).limit_denominator()
-            else:
-                lng = abs(lng)
-                lng_ref = "N"
-                lng = Fraction(lng).limit_denominator()
-            # Printed in JPEG Exif format
-            print("{IP} {lng_ref}; {lng},0/1,0/1; {lat_ref}; {lat},0/1,0/1; 0; 604/1; 2".format(IP=raspberries[index], lng_ref=lng_ref, lng=lng, lat_ref=lat_ref, lat=lat), file=fn_2)
+        with open(filename_3, 'w') as fn_3:
+            for index in range(len(transformed_coords)):
+                trans = transformed_coords[index]
+                lat = trans[0]
+                lng = trans[1]
+                # Printed in VisualSFM format
+                print("{0} {1} {2}".format(raspberries[index], lat, lng), file=fn_1)
+                if lat < 1:
+                    lat = abs(lat)
+                    lat_ref = "W"
+                    lat = Fraction(lat).limit_denominator()
+                else:
+                    lat = abs(lat)
+                    lat_ref = "E"
+                    lat = Fraction(lat).limit_denominator()
+                if lng < 1:
+                    lng = abs(lng)
+                    lng_ref = "S"
+                    lng = Fraction(lng).limit_denominator()
+                else:
+                    lng = abs(lng)
+                    lng_ref = "N"
+                    lng = Fraction(lng).limit_denominator()
+                # Printed in JPEG Exif format
+                print("{IP} {lng_ref}; {lng},0/1,0/1; {lat_ref}; {lat},0/1,0/1; 0; 604/1; 2".format(IP=raspberries[index], lng_ref=lng_ref, lng=lng, lat_ref=lat_ref, lat=lat), file=fn_2)
+                # Printed in GCP format
+                print("{IP} {x_ref} {y_ref} {z_ref}".format(IP=raspberries[index], x_ref=points[index][0]*100, y_ref=points[index][1]*100, z_ref=604*100), file=fn_3)
+                number = raspberries[index].split('.')[-1]
+                dim_1D = "ShakoorCamera_" + str(number).zfill(3) + ".jpg"
+                prt_y = (abs(int(number)-(width*height)-10) / width) + 1
+                prt_x = (abs(int(number)-(width*height)-10) % width) + 1
+                dim_2D = "ShakoorCamera_" + "Y" + str(prt_y).zfill(2) + "_X" + str(prt_x).zfill(2) + ".jpg"
+                f3_1 = "vsfm_cm_dim_1D.gcp"
+                f3_1_dev = open(f3_1, 'a')
+                print("{dim_1D} {x_ref} {y_ref} {z_ref}".format(dim_1D=dim_1D, x_ref=points[index][0]*100, y_ref=points[index][1]*100, z_ref=604*100), file=f3_1_dev)
+                f3_1_dev.close()
+                f3_2 = "vsfm_cm_dim_2D.gcp"
+                f3_2_dev = open(f3_2, "a")
+                print("{dim_2D} {x_ref} {y_ref} {z_ref}".format(dim_2D=dim_2D, x_ref=points[index][0]*100, y_ref=points[index][1]*100, z_ref=604*100), file=f3_2_dev)
+                f3_2_dev.close()

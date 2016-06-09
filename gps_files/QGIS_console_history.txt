@@ -1,0 +1,20 @@
+sourceCrs_2 = QgsCoordinateReferenceSystem(4326)
+destCrs_2 = QgsCoordinateReferenceSystem(3857)
+xform_2 = QgsCoordinateTransform(sourceCrs_2, destCrs_2)
+
+d = QgsDistanceArea()
+d.setEllipsoidalMode(True)
+# d.measureLine(x, y)
+
+nw = QgsPoint(-90.397258, 38.675402)
+ne = QgsPoint(-90.397171, 38.675402)
+se = QgsPoint(-90.397171, 38.657247)
+sw = QgsPoint(-90.397298, 38.657249)
+
+nwm = xform_2.transform(nw)
+nem = xform_2.transform(ne)
+swm = xform_2.transform(sw)
+sem = xform_2.transform(se)
+
+cam_21 = QgsPoint(-90.39719062208, 38.67537724532)
+cam_21_m = xform_2.transform(cam_21)
