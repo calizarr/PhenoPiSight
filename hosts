@@ -213,9 +213,8 @@ ansible_ssh_user=pi
 ansible_ssh_pass=raspberry
 
 [alpha_omega]
-10.16.0.74
-alphabackup.ddpsc.org
-omegabackup.ddpsc.org
+#alphabackup.ddpsc.org
+#omegabackup.ddpsc.org
 
 [alpha_omega:vars]
 ansible_ssh_user=pi

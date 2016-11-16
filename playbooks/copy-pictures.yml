@@ -5,7 +5,8 @@
   ignore_errors: True
   vars:
     img_dir: /home/pi/Images
-    local_dir: /home/clizarraga/Raspberry_Pi/Images
+    # local_dir: /home/clizarraga/Raspberry_Pi/Images
+    local_dir: /shares/tmockler_share/Data/EPSCoR/PhenoPiSight/Images
 
   tasks:
     - name: Get local date Y-m-d

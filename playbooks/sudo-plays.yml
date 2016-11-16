@@ -72,12 +72,19 @@
       cron: name="Take pictures 5 AM to 9 PM" state=absent
       when: cron_remove
 
+    - name: Send camera_single.py to the rPIs.
+      copy:
+        src: /home/clizarraga/Projects/EPSCOR_Bramble_GH9C/pi_files/camera_single.py
+        dest: /home/pi/camera_single.py
+      become: no
+      when: python_script
+      
     - name: Check if camera_single.py exists
       stat:
         path: /home/pi/camera_single.py
       register: cam_single
       
-    - name: Change camera_single.py attributes from the rPIs.
+    - name: Change camera_single.py attributes from the rPIs.    
       file:
         path: /home/pi/camera_single.py
         owner: pi
@@ -85,13 +92,6 @@
         mode: "u+x"
       become: yes
       when: cam_single.stat.exists
-      
-    - name: Send camera_single.py to the rPIs.
-      copy:
-        src: /home/clizarraga/Projects/EPSCOR_Bramble_GH9C/pi_files/camera_single.py
-        dest: /home/pi/camera_single.py
-      become: no
-      when: python_script
 
     - name: Get gps_info.txt information from a master text file
       local_action:
@@ -103,7 +103,30 @@
     - name: Create gps_info.txt on the rPI
       shell: "echo '{{ gps_info.stdout }}' > /home/pi/gps_info.txt"
       become: no
-      when: gps_send  
+      when: gps_send
+
+    - name: Add dradis to hosts file of every RPI
+      lineinfile:
+        dest: /etc/hosts
+        line: "10.5.1.20 dradis.ddpsc.org dradis"
+      notify:
+        - restart ntp
+        - reload ntp
+
+    - name: Copy correct ntp.conf file to each RPI
+      copy:
+        src: ../ntp.conf
+        dest: /etc/ntp.conf
+      notify:
+        - restart ntp
+        - reload ntp
+
+- handlers:
+    - name: restart ntp
+      service: name=ntp state=started enabled=yes
+
+    - name: reload ntp
+      service: name=ntp state=reloaded
 
 - hosts: clizarraga_chronos
   vars:
