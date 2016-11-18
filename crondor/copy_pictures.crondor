@@ -1,0 +1,31 @@
+####################
+#
+# Example Vanilla Universe Job
+# Simple HTCondor submit description file
+#
+####################
+
+name             = CRONDOR_test
+universe         = vanilla
+getenv           = true
+# executable       = $(exec_folder)/VisualSFM
+executable       = /bin/bash
+arguments        = -x /home/clizarraga/Projects/EPSCOR_Bramble_GH9C/playbooks/playbook-ansible.sh -i ../hosts copy-pictures.yml -f 2 -vv
+log              = /home/clizarraga/.logs/$(name).log
+output           = /home/clizarraga/.logs/$(name).out
+error            = /home/clizarraga/.logs/$(name).error
+request_cpus     = 40
+request_memory   = 100G
+notification     = Always
+
+## Crondor portions
+cron_minute      = 0
+cron_prep_time   = 300
+#cron_window      = 300
+on_exit_remove   = false
+
+##  Do not edit  ##
+accounting_group = $ENV(CONDOR_GROUP)
+###################
+
+queue

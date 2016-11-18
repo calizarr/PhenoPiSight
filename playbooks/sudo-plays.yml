@@ -64,14 +64,6 @@
       become: yes
       when: timezone_change
 
-    - name: Add hourly cron job from 5 AM to 9 PM
-      cron: name="Take pictures 5 AM to 9 PM" hour="5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21" minute="0" jobs="python single_camera.py"
-      when: cron_add
-
-    - name: Remove hourly cron job from 5 AM to 9 PM
-      cron: name="Take pictures 5 AM to 9 PM" state=absent
-      when: cron_remove
-
     - name: Send camera_single.py to the rPIs.
       copy:
         src: /home/clizarraga/Projects/EPSCOR_Bramble_GH9C/pi_files/camera_single.py
@@ -108,7 +100,7 @@
     - name: Add dradis to hosts file of every RPI
       lineinfile:
         dest: /etc/hosts
-        line: "10.5.1.20 dradis.ddpsc.org dradis"
+        line: "10.5.1.20       dradis.ddpsc.org dradis"
       notify:
         - restart ntp
         - reload ntp
@@ -117,27 +109,14 @@
       copy:
         src: ../ntp.conf
         dest: /etc/ntp.conf
+      become: yes
       notify:
         - restart ntp
         - reload ntp
 
-- handlers:
+  handlers:
     - name: restart ntp
       service: name=ntp state=started enabled=yes
 
     - name: reload ntp
       service: name=ntp state=reloaded
-
-- hosts: clizarraga_chronos
-  vars:
-    local_cron: false
-    local_cron_remove: false
-
-  tasks:
-    - name: Add hourly cron job to take pictures from rPIs at every hour.
-      cron: name="Copy pictures every hour" hour="*" minute="5" jobs="cd /home/clizarraga/Projects/EPSCOR_Bramble_GH9C/playbooks && time bash -x playbook-ansible.sh -i ../hosts copy-pictures.yml -f 2 -vv"
-      when: local_cron
-
-    - name: Remove hourly cron job to take pictures from rPIs at every hour.
-      cron: name="Copy pictures every hour" state=absent
-      when: local_cron_remove
