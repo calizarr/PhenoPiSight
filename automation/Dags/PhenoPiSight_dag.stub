@@ -6,5 +6,5 @@ JOB VSFM    /shares/tmockler_share/Data/EPSCoR/PhenoPiSight/Reconstructions/Visu
 #JOB VSFM    /shares/tmockler_share/Data/EPSCoR/PhenoPiSight/Reconstructions/VisualSFM_date_var/visual_sfm_full_date_var.condor
 PARENT Proc CHILD VSFM
 VARS Proc date_hour="date_var"
-SCRIPT POST VSFM move_logs.sh date_var
+SCRIPT POST VSFM ../move_logs.sh date_var
 
