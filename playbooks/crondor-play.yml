@@ -4,15 +4,17 @@
   remote_user: pi
   become: yes
   vars:
-    cron_add: false
+    cron_add: true
     cron_remove: false
     
   tasks:
     - name: Add hourly cron job from 5 AM to 9 PM
-      cron: name="Take pictures 5 AM to 9 PM" hour="5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21" minute="0" jobs="python single_camera.py"
+      become: no
+      cron: name="Take pictures 5 AM to 9 PM" hour="5-21" minute="5" job="/usr/bin/python /home/pi/camera_single.py >> /home/pi/crontab.log 2>&1"
       when: cron_add
 
     - name: Remove hourly cron job from 5 AM to 9 PM
+      become: no
       cron: name="Take pictures 5 AM to 9 PM" state=absent
       when: cron_remove    
 

@@ -6,20 +6,21 @@
 ####################
 
 name             = CRONDOR_test
+project_root     = /home/clizarraga/Projects/EPSCOR_Bramble_GH9C
 universe         = vanilla
 getenv           = true
-# executable       = $(exec_folder)/VisualSFM
 executable       = /bin/bash
-arguments        = -x /home/clizarraga/Projects/EPSCOR_Bramble_GH9C/playbooks/playbook-ansible.sh -i ../hosts copy-pictures.yml -f 2 -vv
+arguments        = -x $(project_root)/playbooks/playbook-ansible.sh $(project_root)/playbooks/copy-pictures.yml -i $(project_root)/hosts -f 2 -v
 log              = /home/clizarraga/.logs/$(name).log
 output           = /home/clizarraga/.logs/$(name).out
 error            = /home/clizarraga/.logs/$(name).error
-request_cpus     = 40
-request_memory   = 100G
+request_cpus     = 4
+request_memory   = 10G
 notification     = Always
+rank		 = cpus
 
 ## Crondor portions
-cron_minute      = 0
+cron_minute      = 5
 cron_prep_time   = 300
 #cron_window      = 300
 on_exit_remove   = false

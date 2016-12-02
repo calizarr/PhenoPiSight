@@ -1,0 +1,26 @@
+####################
+#
+# Example Vanilla Universe Job
+# Simple HTCondor submit description file
+#
+####################
+
+date_hour        = 1970-01-01-00
+name             = Pre_processing_$(date_hour)
+universe         = vanilla
+getenv           = true
+executable       = /bin/bash
+arguments        = pre_proc_pps.sh $(date_hour)
+log              = /shares/tmockler_share/Data/EPSCoR/PhenoPiSight/Images/logs/$(name).log
+output           = /shares/tmockler_share/Data/EPSCoR/PhenoPiSight/Images/logs/$(name).out
+error            = /shares/tmockler_share/Data/EPSCoR/PhenoPiSight/Images/logs/$(name).error
+request_cpus     = 1
+request_memory   = 5G
+notification     = Always
+Rank             = cpus
+
+##  Do not edit  ##
+accounting_group = $ENV(CONDOR_GROUP)
+###################
+
+queue

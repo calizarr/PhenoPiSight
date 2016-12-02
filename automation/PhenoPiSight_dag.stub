@@ -1,0 +1,10 @@
+# File name: PhenoPiSight.dag
+#
+
+JOB Proc    /shares/tmockler_share/Data/EPSCoR/PhenoPiSight/Images/pre_proc_pps.condor DIR Images/
+JOB VSFM    /shares/tmockler_share/Data/EPSCoR/PhenoPiSight/Reconstructions/VisualSFM_date_var/visual_sfm_full_date_var.condor DIR Reconstructions/VisualSFM_date_var/
+#JOB VSFM    /shares/tmockler_share/Data/EPSCoR/PhenoPiSight/Reconstructions/VisualSFM_date_var/visual_sfm_full_date_var.condor
+PARENT Proc CHILD VSFM
+VARS Proc date_hour="date_var"
+SCRIPT POST VSFM move_logs.sh date_var
+
