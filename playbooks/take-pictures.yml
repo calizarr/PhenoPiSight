@@ -1,5 +1,5 @@
 ---
-- hosts: Danforth_Shakoor
+- hosts: "{{ variable_host | default('Danforth_Shakoor') }}"
   gather_facts: False
   remote_user: pi
   ignore_errors: True

@@ -1,5 +1,5 @@
 ---
-- hosts: Danforth_Shakoor
+- hosts: "{{ variable_host | default('Danforth_Shakoor') }}"
   gather_facts: False
   remote_user: pi
   become: yes
@@ -8,11 +8,11 @@
     change_utmp: false
     use_dns: false
     change_dns: false
-    restart_ganglia: true
+    restart_ganglia: false
     restart_ssh: false
     timezone: US/Central
-    timezone_change: true
-    cron_add: false
+    timezone_change: false
+    cron_add: true
     cron_remove: false
     python_script: true
     gps_send: true
@@ -28,7 +28,7 @@
       when: restart_ssh
       
     - name: Find with grep if -u0 exists
-      command: grep '-u0' /etc/default/ssh
+      command: grep -e '-u0' /etc/default/ssh
       register: utmp_set
       failed_when: False
       
@@ -36,12 +36,12 @@
       command: sed -i 's/\(SSHD_OPTS=\).*/\1-u0/' /etc/default/ssh
       when: (utmp and utmp_set.rc == 1 and change_utmp)
 
-    - name: Set utmp back in sshd.
+    - name: Set utmp back in sshd
       command: sed -i 's/\(SSHD_OPTS=\).*/\1/' /etc/default/ssh
       when: (not utmp and utmp_set.rc == 0 and change_utmp)
 
     - name: Find with awk if UseDNS exists.
-      command: grep 'UseDNS'/etc/ssh/sshd_config
+      command: grep 'UseDNS' /etc/ssh/sshd_config
       register: dns_exist
       failed_when: False
 
@@ -87,7 +87,7 @@
 
     - name: Get gps_info.txt information from a master text file
       local_action:
-        shell grep {{ inventory_hostname }} {{ master_gps }} | cut -f2-8 -d' '
+        shell grep "{{ inventory_hostname }} N" {{ master_gps }} | cut -f2-8 -d' '
       register: gps_info
       delegate_to: clizarraga_chronos
       become: no

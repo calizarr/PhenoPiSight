@@ -1,5 +1,5 @@
 ---
-- hosts: Danforth_Shakoor
+- hosts: "{{ variable_host | default('Danforth_Shakoor') }}"
   gather_facts: false
   remote_user: pi
   become_user: root
@@ -50,13 +50,14 @@
         "{{ files_to_copy.stdout_lines }}"
 
     - debug:
-        msg: "Folder for the images is {{ folder.results[0].stdout }}"
+        msg: "Folder for the images is {{ folder.results[0].stdout_lines }}"
 
     - name: Pull with rsh/ssh and rsync from chronos
       synchronize:
-        src: "{{ img_dir }}/{{ item }}"
-        # dest: "{{ local_dir }}/{{ date.stdout }}/"
-        dest: "{{ local_dir }}/{{ folder.results[0].stdout }}/"
+        src: "{{ img_dir }}/{{ item.0 }}"
+        # src: "{{ img_dir }}/{{ item }}"
+        dest: "{{ local_dir }}/{{ item.1 }}/"
+        # dest: "{{ local_dir }}/{{ folder.results[0].stdout }}/"
         mode: pull
         use_ssh_args: yes
         ssh_args: yes
@@ -66,8 +67,9 @@
           - "--timeout=30"
 
       when: files_to_copy['stdout_lines'] | length | int >= 1
-      with_items:
-        "{{ files_to_copy.stdout_lines }}"
+      with_together:
+        - "{{ files_to_copy.stdout_lines }}"
+        - "{{ folder.results[0].stdout_lines }}"
 
     - name: Decrease transmit power after sending file
       # local_action:

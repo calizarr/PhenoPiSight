@@ -16,19 +16,4 @@
     - name: Remove hourly cron job from 5 AM to 9 PM
       become: no
       cron: name="Take pictures 5 AM to 9 PM" state=absent
-      when: cron_remove    
-
-
-- hosts: clizarraga_chronos
-  vars:
-    local_cron: false
-    local_cron_remove: false
-
-  tasks:
-    - name: Add hourly cron job to take pictures from rPIs at every hour.
-      cron: name="Copy pictures every hour" hour="*" minute="5" jobs="cd /home/clizarraga/Projects/EPSCOR_Bramble_GH9C/playbooks && time bash -x playbook-ansible.sh -i ../hosts copy-pictures.yml -f 2 -vv"
-      when: local_cron
-
-    - name: Remove hourly cron job to take pictures from rPIs at every hour.
-      cron: name="Copy pictures every hour" state=absent
-      when: local_cron_remove
+      when: cron_remove

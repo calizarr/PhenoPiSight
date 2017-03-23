@@ -198,8 +198,7 @@
 10.9.0.22
 # Commented out ones are below.
 10.9.0.68
-#10.9.0.76 No WiPi
-#10.9.0.68 Camera malfunction
+10.9.0.76
 
 
 [Danforth_Shakoor:children]
@@ -215,6 +214,7 @@ ansible_ssh_pass=raspberry
 [alpha_omega]
 #alphabackup.ddpsc.org
 #omegabackup.ddpsc.org
+10.16.0.78
 
 [alpha_omega:vars]
 ansible_ssh_user=pi
