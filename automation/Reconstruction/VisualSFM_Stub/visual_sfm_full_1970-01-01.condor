@@ -14,12 +14,15 @@ pre_arguments    = $(folder) $(name)
 universe         = vanilla
 getenv           = true
 # executable       = $(exec_folder)/VisualSFM
-executable       = launch_vsfm.sh
+executable       = $(initial)/launch_vsfm.sh
 arguments        = $(pre_arguments)
 log              = /shares/tmockler_share/Data/EPSCoR/PhenoPiSight/Reconstructions/logs/$(name).log
 output           = /shares/tmockler_share/Data/EPSCoR/PhenoPiSight/Reconstructions/logs/$(name).out
 error            = /shares/tmockler_share/Data/EPSCoR/PhenoPiSight/Reconstructions/logs/$(name).error
-request_cpus     = 70
+total_cpus	 = ( TARGET.TotalCpus )
+# request_cpus	 = ifThenElse(TARGET.TotalCpus == 56, 56, 40)
+request_cpus     = TARGET.TotalCpus
+# requirements	 = 
 request_memory   = 50G
 notification     = Always
 
@@ -28,6 +31,7 @@ transfer_libs         = $(exec_folder)/libpba.so, $(exec_folder)/libsiftgpu.so, 
 transfer_input_files  = vsfm_cm_dim_1D_km.gcp, nv.ini, $(exec_folder)/cmvs, $(exec_folder)/pmvs2, $(exec_folder)/genOption, $(exec_folder)/graclus, $(exec_folder)/sift, $(exec_folder)/VisualSFM, $(transfer_libs)
 
 transfer_output_files = run_dir
+initialdir = $(initial)
 
 ##  Do not edit  ##
 accounting_group = $ENV(CONDOR_GROUP)

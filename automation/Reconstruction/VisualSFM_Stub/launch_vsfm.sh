@@ -40,8 +40,12 @@ echo "Loading $images and saving to $sparse"
 cmd="../../VisualSFM sfm $images $sparse |& tee -a vsfm.log"
 echo "Launching $cmd"
 $cmd
-echo "Loading $sparse and saving to $dense"
-cmd="../../VisualSFM sfm+add+merge+pmvs $sparse $dense |& tee -a vsfm.log"
+echo "Loading $sparse and saving to $additional"
+cmd="../../VisualSFM sfm+add $sparse $additional |& tee -a vsfm.log"
+echo "Launching $cmd"
+$cmd
+echo "Loading $additional and saving to $dense"
+cmd="../../VisualSFM sfm+pmvs+shared+merge $additional $dense |& tee -a vsfm.log"
 echo "Launching $cmd"
 $cmd
 echo "Attempting to add GPS points..."

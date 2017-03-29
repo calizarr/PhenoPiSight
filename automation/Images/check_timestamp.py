@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser(description="Check that all images are existent
 parser.add_argument('timestamp', help = "Timestamp to check for Year-Month-Day-Hour (2017-03-21-14)")
 
 args = parser.parse_args()
+args.timestamp = args.timestamp.replace(".", "").replace("/", "")
 
 ymd = "-".join(args.timestamp.split('-')[:3])
 files = [f for f in os.listdir(os.path.join(os.getcwd(), ymd)) if f.endswith(args.timestamp + ".tar")]
