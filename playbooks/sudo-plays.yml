@@ -4,14 +4,14 @@
   remote_user: pi
   become: yes
   vars:
-    utmp: false
-    change_utmp: false
-    use_dns: false
-    change_dns: false
-    restart_ganglia: false
+    utmp: true
+    change_utmp: true
+    use_dns: true
+    change_dns: true
+    restart_ganglia: true
     restart_ssh: false
     timezone: US/Central
-    timezone_change: false
+    timezone_change: true
     cron_add: true
     cron_remove: false
     python_script: true
@@ -103,7 +103,7 @@
         line: "10.5.1.20       dradis.ddpsc.org dradis"
       notify:
         - restart ntp
-        - reload ntp
+        - reload ntp        
 
     - name: Copy correct ntp.conf file to each RPI
       copy:
@@ -113,6 +113,14 @@
       notify:
         - restart ntp
         - reload ntp
+
+    - name: Add hourly cron job from 5 AM to 9 PM
+      cron: name="Take pictures 5 AM to 9 PM" hour="5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21" minute="0" job="python single_camera.py"
+      when: cron_add
+
+    - name: Remove hourly cron job from 5 AM to 9 PM
+      cron: name="Take pictures 5 AM to 9 PM" state=absent
+      when: cron_remove        
 
   handlers:
     - name: restart ntp
