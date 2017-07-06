@@ -1,0 +1,10 @@
+127.0.0.1       localhost
+::1             localhost ip6-localhost ip6-loopback
+ff02::1         ip6-allnodes
+ff02::2         ip6-allrouters
+
+127.0.1.1       ShakoorCamera50
+10.9.0.50       ShakoorCamera50.ddpsc.org ShakoorCamera50
+10.5.1.19       chronos.ddpsc.org chronos
+10.5.1.20       dradis.ddpsc.org dradis
+
