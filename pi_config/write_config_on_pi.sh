@@ -13,4 +13,4 @@ cat wpa_supplicant.conf
 read -n 1 -s
 
 etc=$5
-sudo bash -x copy_config.sh $etc
+sudo bash -x copy_config_on_pi.sh $etc
