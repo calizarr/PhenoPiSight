@@ -28,27 +28,30 @@ In this documentation, we outline the management of 165 Raspberry Pis currently 
       * The interference at the moment doesn't allow for more than about 165 rPIs to be able to be functioning at the same time for most wireless transfers. The cron jobs on the bramble will manage taking pictures, however, the centralized server must be in charge of copying pictures to storage so as to be able to manage the bramble
   * **Bramble Management**
       * The bramble is managed from a centralized server on the infrastructure using [Ansible][], a [configuration/deployment IT management engine][] written in Python
-  * **Raspberry PI Physical Location**
-      * The grid for the Raspberry Pis/Bramble looks like this in both:
-          * **Octet Format** and **Coord Format**  
-          <img src="https://github.com/calizarr/EPSCoR_Bramble_GH9C/blob/master/screenshots/rpi_grid_octet.png" align="left" width="370" height="526">
-          <img src="https://github.com/calizarr/EPSCoR_Bramble_GH9C/blob/master/screenshots/rpi_grid_coord.png" align="right" width="370" height="526">  
-        `The perspective of the images is from the door entering the greenhouse on the bottom left near 10.9.0.16 (30,1)`
-      * The Octet format is the IP address of every rPI starting with 10.9.0.11 from the bottom right to 10.9.0.190 on the top left
-      * The Coord format is the translated matrix coordinates of the last octet of the IP address (11 for 10.9.0.11) reversed in order (from 11 top left to 190 bottom right)
-      * The last octet is treated as a 1 dimensional data structure representing a 2 dimensional grid
-          * 1D representation: `[0, 1, 2, 3]`
-          * 2D representation:
-          * `[0,0 0,1]`
-          * `[1,0 1,1]`
-          * `[y,x]`
-          * The formulas are:
-              * i is the sequential representation, x is the x coordinate in grid form, y is the y coordinate in grid form, width is the width of the matrix aka the length of the x-axis
-              * `x = i % width`
-              * `y = i / width ;; integer division`
-              * `i =  x + width * y`
-          * More information can be found [here][]
-      * The colors represent the division of rPIs per Wireless Access Point
+### Raspberry PI Physical Location ###
+The grid for the Raspberry Pis/Bramble looks like this in both:  
+**Octet Format** and **Coord Format**
+<p float="left">
+<img src="https://github.com/calizarr/EPSCoR_Bramble_GH9C/blob/master/screenshots/rpi_grid_octet.png" alt="Octet Format" width="370" height="526" \>
+<img src="https://github.com/calizarr/EPSCoR_Bramble_GH9C/blob/master/screenshots/rpi_grid_coord.png" alt="Coord" width="370" height="526" \>
+ </p>  
+ 
+  * The perspective of the images is from the door entering the greenhouse on the bottom left near 10.9.0.16 (30,1)
+  * The Octet format is the IP address of every rPI starting with 10.9.0.11 from the bottom right to 10.9.0.190 on the top left
+  * The Coord format is the translated matrix coordinates of the last octet of the IP address (11 for 10.9.0.11) reversed in order (from 11 top left to 190 bottom right)
+  * The last octet is treated as a 1 dimensional data structure representing a 2 dimensional grid
+  * 1D representation: `[0, 1, 2, 3]`
+  * 2D representation:
+    * `[0,0 0,1]`
+    * `[1,0 1,1]`
+    * `[y,x]`
+  * The formulas are:
+    * i is the sequential representation, x is the x coordinate in grid form, y is the y coordinate in grid form, width is the width of the matrix aka the length of the x-axis
+    * `x = i % width`
+    * `y = i / width ;; integer division`
+    * `i =  x + width * y`
+    * More information can be found [here][]
+  * The colors represent the division of rPIs per Wireless Access Point
 
 [here]: http://programmers.stackexchange.com/questions/212808/treating-a-1d-data-structure-as-2d-grid
 
